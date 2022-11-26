@@ -67,8 +67,10 @@
                 " you can also directly write your configuration here
               ''
             ];
-            packages.myVimPackage = {
-              start = pluginMapper startPlugins;
+            packages.myVimPackage = with vimPlugins; {
+              start = pluginMapper startPlugins ++ [
+                (nvim-treesitter.withPlugins (plugins: tree-sitter.allGrammars))
+              ];
               opt = pluginMapper optPlugins;
             };
           };

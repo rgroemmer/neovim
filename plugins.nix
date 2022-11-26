@@ -14,6 +14,7 @@
     "onedark-nvim"
     "lualine-nvim"
     "bufferline-nvim"
+    "indent-blankline-nvim"
   ];
 
   optPlugins = with pkgs; [
