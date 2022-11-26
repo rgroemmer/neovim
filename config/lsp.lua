@@ -36,6 +36,18 @@ for _, lsp in ipairs(servers) do
   }
 end
 
+require('lspconfig').yamlls.setup {
+  on_attach = on_attach,
+  capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities()),
+  settings = {
+    yaml = {
+      schemas = {
+        ["https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.25.4-standalone-strict/all.json"] = "*.yaml",
+      }
+    },
+  }
+}
+
 -- luasnip setup
 local luasnip = require 'luasnip'
 

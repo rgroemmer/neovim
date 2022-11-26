@@ -8,6 +8,7 @@
     gopls
     terraform-ls
     rust-analyzer
+    nodePackages.yaml-language-server
   ];
 
   startPlugins = with pkgs; [
