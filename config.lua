@@ -1,3 +1,7 @@
+-- disable netrw at the very start of your init.lua (strongly advised)
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 local lsp = require "lspconfig"
 
 -- treesitter
@@ -14,6 +18,37 @@ require('onedark').setup {
 }
 require('onedark').load()
 
+-- statusbar
+vim.opt.showmode = false
+
+require('lualine').setup({
+  options = {
+    theme = 'onedark',
+    icons_enabled = true,
+    component_separators = '|',
+    section_separators = '',
+  },
+})
+
+-- tab manager
+require('bufferline').setup({
+  options = {
+    mode = 'buffers',
+    offsets = {
+      {filetype = 'NvimTree'}
+    },
+  },
+  highlights = {
+    buffer_selected = {
+      italic = false
+    },
+    indicator_selected = {
+      fg = {attribute = 'fg', highlight = 'Function'},
+      italic = false
+    }
+  }
+})
+
 -- indent-blankline
 vim.opt.list = true
 vim.opt.listchars:append "eol:↴"
@@ -26,4 +61,13 @@ require('indent_blankline').setup({
   show_current_context = false
 })
 
+-- comments (keymap: gc, gciw)
+require('Comment').setup({})
 
+-- surround
+require("nvim-surround").setup()
+
+-- explorer
+require('nvim-tree').setup({
+  --open_on_setup_file = true,
+})
