@@ -19,7 +19,7 @@ set startofline
 
 set updatetime=300
 " set timeout for double keymaps
-set timeoutlen=250
+set timeoutlen=400
 
 
 " map plugins with leader key

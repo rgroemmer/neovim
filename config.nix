@@ -5,20 +5,23 @@
 
     # language servers
     rnix-lsp
+    gopls
   ];
 
   startPlugins = with pkgs; [
+    # lsp and autocompletion
     "nvim-lspconfig" # will be used from pkgs.vimPlugins
-    "earthly-vim" # will be built on the fly from inputs
-    # TODO handle dependencies?
-    "onedark-nvim"
-
-    # completion
     "nvim-cmp"
     "cmp-nvim-lsp"
     "cmp-path"
     "cmp-git"
+    "cmp_luasnip"
+    "luasnip"
     "lsp_signature-nvim"
+
+    "earthly-vim" # will be built on the fly from inputs
+    
+    "onedark-nvim"
 
     "lualine-nvim"
     "bufferline-nvim"
