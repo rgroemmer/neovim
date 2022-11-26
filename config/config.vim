@@ -25,3 +25,5 @@ set timeoutlen=250
 " map plugins with leader key
 map <leader>e :NvimTreeFocus<CR>
 map <leader>t :BufferLinePick<CR>
+
+set completeopt=menu,menuone,noselect

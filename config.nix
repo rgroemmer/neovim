@@ -11,10 +11,15 @@
     "nvim-lspconfig" # will be used from pkgs.vimPlugins
     "earthly-vim" # will be built on the fly from inputs
     # TODO handle dependencies?
-    "coq_nvim"
-    "coq-artifacts"
-    "coq-thirdparty"
     "onedark-nvim"
+
+    # completion
+    "nvim-cmp"
+    "cmp-nvim-lsp"
+    "cmp-path"
+    "cmp-git"
+    "lsp_signature-nvim"
+
     "lualine-nvim"
     "bufferline-nvim"
     "indent-blankline-nvim"
@@ -27,5 +32,15 @@
   optPlugins = with pkgs; [
 
   ];
-  
+
+  # build neovim config
+  neovimConfig = with pkgs.lib.strings; builtins.concatStringsSep "\n" [
+    (fileContents config/config.vim)
+    ''
+      lua << EOF
+        ${fileContents config/lsp.lua}
+        ${fileContents config/plugins.lua}
+      EOF
+    ''
+  ];
 }

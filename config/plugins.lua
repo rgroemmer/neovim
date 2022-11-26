@@ -2,14 +2,6 @@
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
-local lsp = require "lspconfig"
-
-vim.g.coq_settings = {
-  xdg = true,
-  auto_start = 'shut-up',
-}
-require 'coq'
-
 -- treesitter
 require('nvim-treesitter.configs').setup {
   auto_install = false,
