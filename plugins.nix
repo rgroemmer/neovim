@@ -10,7 +10,9 @@
   startPlugins = with pkgs; [
     "nvim-lspconfig" # will be used from pkgs.vimPlugins
     "earthly-vim" # will be built on the fly from inputs
-    "coq-vim" #TODO
+    "coq_nvim" #TODO
+    "coq-artifacts"
+    "coq-thirdparty"
     "onedark-nvim"
     "lualine-nvim"
     "bufferline-nvim"
