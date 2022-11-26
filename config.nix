@@ -6,6 +6,8 @@
     # language servers
     rnix-lsp
     gopls
+    terraform-ls
+    rust-analyzer
   ];
 
   startPlugins = with pkgs; [
@@ -18,6 +20,12 @@
     "cmp_luasnip"
     "luasnip"
     "lsp_signature-nvim"
+    "nvim-autopairs"
+
+    # snippets are needed for many language servers
+    "cmp-vsnip"
+    "vim-vsnip"
+    "friendly-snippets" # snippet collection for all languages
 
     "earthly-vim" # will be built on the fly from inputs
     

@@ -17,10 +17,6 @@ keymap('<leader>rl', vim.diagnostic.setloclist, opts)
 
 local lsp_signature = require('lsp_signature')
 
-require('lspconfig')['gopls'].setup{
-  on_attach = on_attach,
-}
-
 require('lsp_signature').setup({
   bind = true,
   handler_opts = {
@@ -32,7 +28,7 @@ require('lsp_signature').setup({
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 local lspconfig = require('lspconfig')
 
-local servers = { 'gopls' }
+local servers = { 'gopls', 'rnix', 'terraformls' }
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
     -- on_attach = my_custom_on_attach,
@@ -84,3 +80,8 @@ cmp.setup {
     { name = 'luasnip' },
   },
 }
+
+-- autoclose brackets
+require('nvim-autopairs').setup({
+  disable_filetype = { "TelescopePrompt" , "vim" },
+})
