@@ -2,13 +2,55 @@
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
+-- set termguicolors to enable highlight groups
+vim.opt.termguicolors = true
+
+-- explorer
+require('nvim-tree').setup({
+  sort_by = "case_sensitive",
+  open_on_setup = false,
+  open_on_setup_file = false,
+  view = {
+    adaptive_size = false,
+    mappings = {
+      list = {
+        { key = "u", action = "dir_up" },
+      },
+    },
+  },
+  renderer = {
+    group_empty = true,
+  },
+  filters = {
+    dotfiles = true,
+  },
+})
+
 -- treesitter
 require('nvim-treesitter.configs').setup {
+  -- they are managed by nix
   auto_install = false,
+  --ensure_installed = "all",
   highlight = {
     enable = true,
+    additional_vim_regex_highlighting = false,
+  },
+  indent = { enable = true },
+  rainbow = {
+    enable = true,
+    extended_mode = true,
+    -- prevents lagging in large files
+    max_file_lines = 1000,
   },
 }
+
+require('treesitter-context').setup {
+  enable = true,
+  throttle = true,
+}
+
+
+
 
 -- theme 
 require('onedark').setup {
@@ -48,7 +90,7 @@ require('bufferline').setup({
 })
 
 -- indent-blankline
-vim.opt.list = true
+vim.opt.list = false
 vim.opt.listchars:append "eol:↴"
 
 require('indent_blankline').setup({
@@ -61,11 +103,6 @@ require('Comment').setup({})
 
 -- surround
 require("nvim-surround").setup()
-
--- explorer
-require('nvim-tree').setup({
-  --open_on_setup_file = true,
-})
 
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
@@ -82,3 +119,16 @@ require("telescope").setup({
         },
     },
 })
+
+-- autoclose brackets
+require('nvim-autopairs').setup({
+  disable_filetype = { "TelescopePrompt" , "vim" },
+})
+
+require("which-key").setup {
+}
+
+local async = require "plenary.async"
+require('refactoring').setup({})
+
+require'nvim-web-devicons'.setup()

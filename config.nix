@@ -9,8 +9,10 @@
     terraform-ls
     rust-analyzer
     nodePackages.yaml-language-server
-  ];
+    nodePackages.typescript
+    nodePackages.typescript-language-server
 
+  ];
   startPlugins = with pkgs; [
     # lsp and autocompletion
     "nvim-lspconfig" # will be used from pkgs.vimPlugins
@@ -22,11 +24,23 @@
     "luasnip"
     "lsp_signature-nvim"
     "nvim-autopairs"
+    "nvim-treesitter-context"
+
+    "refactoring-nvim"
+    "trouble-nvim"
+
+    "plenary-nvim"
+
+    "which-key-nvim"
+
+    "nvim-web-devicons"
 
     # snippets are needed for many language servers
     "cmp-vsnip"
     "vim-vsnip"
     "friendly-snippets" # snippet collection for all languages
+
+    "vim-smoothie" # smooth scroll
 
     "earthly-vim" # will be built on the fly from inputs
     
