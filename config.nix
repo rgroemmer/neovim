@@ -16,11 +16,6 @@
   startPlugins = with pkgs; [
     # lsp and autocompletion
     "nvim-lspconfig" # will be used from pkgs.vimPlugins
-    "nvim-cmp"
-    "cmp-nvim-lsp"
-    "cmp-path"
-    "cmp-git"
-    "cmp_luasnip"
     "luasnip"
     "lsp_signature-nvim"
     "nvim-autopairs"
@@ -34,11 +29,6 @@
     "which-key-nvim"
 
     "nvim-web-devicons"
-
-    # snippets are needed for many language servers
-    "cmp-vsnip"
-    "vim-vsnip"
-    "friendly-snippets" # snippet collection for all languages
 
     "vim-smoothie" # smooth scroll
 
