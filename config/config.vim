@@ -73,3 +73,6 @@ nmap <C-f> <Plug>(SmoothieUpwards)
 let g:smoothie_no_default_mappings = 1
 
 set signcolumn=yes
+
+" COQ
+let g:coq_settings = { 'xdg': v:true, "keymap.recommended": v:true, "auto_start": "shut-up", 'keymap.eval_snips': '<leader>j', "keymap.repeat": 'c-r', "keymap.jump_to_mark": '<space><CR>' }

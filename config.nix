@@ -8,16 +8,24 @@
     gopls
     terraform-ls
     rust-analyzer
+    nodejs
     nodePackages.yaml-language-server
     nodePackages.typescript
     nodePackages.typescript-language-server
-
+    python39
+    sqlite
   ];
   startPlugins = with pkgs; [
     # lsp and autocompletion
     "nvim-lspconfig" # will be used from pkgs.vimPlugins
     "luasnip"
     "lsp_signature-nvim"
+
+    # coq
+    "coq_nvim"
+    "coq-artifacts"
+    "coq-thirdparty"
+
     "nvim-autopairs"
     "nvim-treesitter-context"
 
@@ -33,7 +41,6 @@
     "vim-smoothie" # smooth scroll
 
     "earthly-vim" # will be built on the fly from inputs
-    
     "onedark-nvim"
 
     "lualine-nvim"

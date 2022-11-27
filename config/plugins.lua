@@ -7,9 +7,7 @@ require('onedark').setup {
   style = 'darker',
   colors = {
     red = "#e06c75",
-    light_grey = "#4f4f4f";
   },
-
    -- Plugins Config --
   diagnostics = {
     darker = false, -- darker colors for diagnostic
@@ -134,6 +132,9 @@ require('nvim-autopairs').setup({
 })
 
 require("which-key").setup {
+  triggers = {
+    "<leader>"
+  },
 }
 
 local async = require "plenary.async"
