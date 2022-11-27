@@ -2,6 +2,23 @@
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
+--- theme 
+require('onedark').setup {
+  style = 'darker',
+  colors = {
+    red = "#e06c75",
+    light_grey = "#4f4f4f";
+  },
+
+   -- Plugins Config --
+  diagnostics = {
+    darker = false, -- darker colors for diagnostic
+    undercurl = true,   -- use undercurl instead of underline for diagnostics
+    background = true,    -- use background color for virtual text
+  },
+}
+require('onedark').load()
+
 -- set termguicolors to enable highlight groups
 vim.opt.termguicolors = true
 
@@ -49,15 +66,6 @@ require('treesitter-context').setup {
   throttle = true,
 }
 
-
-
-
--- theme 
-require('onedark').setup {
-  style = 'darker',
-}
-require('onedark').load()
-
 -- statusbar
 vim.opt.showmode = false
 
@@ -90,7 +98,7 @@ require('bufferline').setup({
 })
 
 -- indent-blankline
-vim.opt.list = false
+vim.opt.list = true
 vim.opt.listchars:append "eol:↴"
 
 require('indent_blankline').setup({

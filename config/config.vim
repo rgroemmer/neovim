@@ -72,3 +72,4 @@ nmap <C-d> <Plug>(SmoothieDownwards)
 nmap <C-f> <Plug>(SmoothieUpwards)
 let g:smoothie_no_default_mappings = 1
 
+set signcolumn=yes
