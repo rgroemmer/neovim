@@ -14,17 +14,22 @@
     nodePackages.typescript-language-server
     python39
     sqlite
+    golangci-lint
   ];
   startPlugins = with pkgs; [
     # lsp and autocompletion
     "nvim-lspconfig" # will be used from pkgs.vimPlugins
     "luasnip"
     "lsp_signature-nvim"
+    "cmp-nvim-lsp"
+    "nvim-cmp"
 
     # coq
     "coq_nvim"
     "coq-artifacts"
     "coq-thirdparty"
+
+    "go-ray"
 
     "nvim-autopairs"
     "nvim-treesitter-context"

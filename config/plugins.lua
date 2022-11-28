@@ -132,8 +132,8 @@ require('nvim-autopairs').setup({
 })
 
 require("which-key").setup {
-  triggers = {
-    "<leader>"
+  triggers_blacklist = {
+    i = {},
   },
 }
 
@@ -141,3 +141,12 @@ local async = require "plenary.async"
 require('refactoring').setup({})
 
 require'nvim-web-devicons'.setup()
+
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+require('go').setup({
+  -- other setups ....
+  lsp_cfg = {
+    capabilities = capabilities,
+    -- other setups
+  },
+})
