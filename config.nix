@@ -1,7 +1,10 @@
 { pkgs }: {
   extraPackages = with pkgs; [
+
   ];
+
   startPlugins = with pkgs; [
+    "onedark-nvim"
   ];
 
   optPlugins = with pkgs; [
