@@ -4,7 +4,7 @@ vim.g.loaded_netrwPlugin = 1
 
 -- theme 
 require('onedark').setup {
-  style = 'deep',
+  style = 'darker',
   colors = {
     red = "#e06c75",
     grey = "#7a7f89",
@@ -30,5 +30,66 @@ require('nvim-tree').setup({
         { key = "d", action = "cd" },
       },
     },
+  },
+})
+
+-- treesitter
+require('nvim-treesitter.configs').setup {
+  -- they are managed by nix
+  auto_install = false,
+  --ensure_installed = "all",
+  highlight = {
+    enable = true,
+    additional_vim_regex_highlighting = false,
+  },
+  indent = { enable = true },
+  rainbow = {
+    enable = true,
+    extended_mode = true,
+    -- prevents lagging in large files
+    max_file_lines = 1000,
+  },
+}
+
+
+-- tab manager
+require('bufferline').setup({
+  options = {
+    mode = 'buffers',
+    offsets = {
+      {filetype = 'NvimTree'}
+    },
+  },
+  highlights = {
+    buffer_selected = {
+      italic = false
+    },
+    indicator_selected = {
+      fg = {attribute = 'fg', highlight = 'Function'},
+      italic = false
+    }
+  }
+})
+
+-- autoclose brackets
+require('nvim-autopairs').setup({
+  disable_filetype = { "TelescopePrompt" , "vim" }
+})
+
+require("which-key").setup {
+  triggers_blacklist = {
+    i = { "i" },
+  },
+}
+
+-- statusbar
+vim.opt.showmode = false
+
+require('lualine').setup({
+  options = {
+    theme = 'onedark',
+    icons_enabled = true,
+    component_separators = '|',
+    section_separators = '',
   },
 })
