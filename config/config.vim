@@ -1,3 +1,5 @@
+" ----------------------------# default configuration #----------------------------
+
 " Don't try to be vi compatible
 set nocompatible
 
@@ -11,6 +13,9 @@ syntax on
 filetype plugin indent on
 
 let mapleader = " "
+inoremap jk <Esc>
+" disable esc to learn above
+imap <Esc> <NOP>
 
 " Security
 set modelines=0
@@ -86,3 +91,8 @@ map <leader>l :set list!<CR> " Toggle tabs and EOL
 " Color scheme (terminal)
 set t_Co=256
 set background=dark
+
+" ----------------------------# custom configuration #----------------------------
+
+" plugin mappings
+map <leader>e :NvimTreeFocus<CR>

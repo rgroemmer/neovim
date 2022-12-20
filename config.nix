@@ -4,7 +4,8 @@
   ];
 
   startPlugins = with pkgs; [
-    "onedark-nvim"
+    "onedark-nvim"        # theme
+    "nvim-tree-lua"       # explorer
   ];
 
   optPlugins = with pkgs; [

@@ -5,7 +5,6 @@ vim.g.loaded_netrwPlugin = 1
 --- theme 
 require('onedark').setup {
   style = 'deep',
-  transparent = true;
   colors = {
     red = "#e06c75",
     grey = "#7a7f89",
@@ -20,3 +19,16 @@ require('onedark').setup {
 require('onedark').load()
 -- set termguicolors to enable highlight groups
 vim.opt.termguicolors = true
+
+
+--- explorer
+require('nvim-tree').setup({
+  open_on_setup_file = true,
+  view = {
+    mappings = {
+      list = {
+        { key = "d", action = "cd" },
+      },
+    },
+  },
+})
