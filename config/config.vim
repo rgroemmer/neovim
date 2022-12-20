@@ -1,75 +1,93 @@
-" default configuration
-:let mapleader = ' ' 
-:inoremap jk <ESC>
+" Don't try to be vi compatible
+set nocompatible
 
-set timeoutlen=500
-"set signcolumn=yes
+" Helps force plugins to load correctly when it is turned back on below
+filetype off
 
-" map plugins with leader key
-map <leader>e :NvimTreeToggle<CR>
-map <leader>t :BufferLinePick<CR>
+" Turn on syntax highlighting
+syntax on
 
-"faster scrolling
-noremap <S-j> 3jzz
-noremap <S-k> 3kzz
+" For plugins to load correctly
+filetype plugin indent on
 
-"buffer
-nmap <C-n> :bnext<CR>
-nmap <C-p> :bprevious<CR>
+let mapleader = " "
 
-"finder
-nmap ; :FzfLua files<CR>
+" Security
+set modelines=0
 
-"save undo / redo across sessions
-set undofile
-set undodir=~/.vim/undo
-
-set termguicolors
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-
-set mouse=
-
-"synatx
-syntax enable
+" Show line numbers
 set number
-set autoread
-set encoding=UTF-8
 
-set cursorline
-set laststatus=2
-set scrolloff=8
-set startofline
+" Show file stats
+set ruler
 
-"filetypes
-au BufRead,BufNewFile *.nix set filetype=nix
+" Blink cursor on error instead of beeping (grr)
+set visualbell
 
-" tabs and spaces
-set expandtab
+" Encoding
+set encoding=utf-8
+
+" Whitespace
+set wrap
+set textwidth=79
+set formatoptions=tcqrn1
 set tabstop=2
 set shiftwidth=2
+set softtabstop=2
+set expandtab
+set noshiftround
 
-" searching
+" Cursor motion
+set scrolloff=3
+set backspace=indent,eol,start
+set matchpairs+=<:> " use % to jump between pairs
+runtime! macros/matchit.vim
+
+" Allow hidden buffers
+set hidden
+
+" Rendering
+set ttyfast
+
+" Status bar
+set laststatus=2
+
+" Last line
+set showmode
+set showcmd
+
+" Searching
+nnoremap / /\v
+vnoremap / /\v
+set hlsearch
+set incsearch
 set ignorecase
 set smartcase
-set cursorline
-set laststatus=2
-set startofline
+set showmatch
+map <leader><space> :let @/=''<cr> " clear search
 
-set updatetime=300
-set hidden
-set nobackup
-set nowritebackup
-set noswapfile
-set noshowmode
-"automatically source .vimrc from project folder
-set exrc
-set secure
+" Remap help key.
+inoremap <F1> <ESC>:set invfullscreen<CR>a
+nnoremap <F1> :set invfullscreen<CR>
+vnoremap <F1> :set invfullscreen<CR>
 
-highlight IndentBlanklineChar guifg=grey25 gui=nocombine
+" Textmate holdouts
 
-"vim smoothie
-nmap <C-d> <Plug>(SmoothieDownwards)
-nmap <C-f> <Plug>(SmoothieUpwards)
-let g:smoothie_no_default_mappings = 1
+" Formatting
+map <leader>q gqip
 
-set signcolumn=yes
+" Visualize tabs and newlines
+set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
+" Uncomment this to enable by default:
+set list " To enable by default
+" Or use your leader key + l to toggle on/off
+map <leader>l :set list!<CR> " Toggle tabs and EOL
+
+" Color scheme (terminal)
+set t_Co=256
+set background=dark
+let g:solarized_termcolors=256
+let g:solarized_termtrans=1
+" put https://raw.github.com/altercation/vim-colors-solarized/master/colors/solarized.vim
+" in ~/.vim/colors/ and uncomment:
+" colorscheme solarized
