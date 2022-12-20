@@ -17,46 +17,9 @@
     golangci-lint
   ];
   startPlugins = with pkgs; [
-    # lsp and autocompletion
-    "nvim-lspconfig" # will be used from pkgs.vimPlugins
-    "luasnip"
-    "lsp_signature-nvim"
-    "cmp-nvim-lsp"
-    "nvim-cmp"
-
-    "better-escape-nvim"
-
-    # coq
-    "coq_nvim"
-    "coq-artifacts"
-    "coq-thirdparty"
-
-    "go-ray"
-
-    "nvim-autopairs"
-    "nvim-treesitter-context"
-
-    "refactoring-nvim"
-    "trouble-nvim"
-
-    "plenary-nvim"
-
-    "which-key-nvim"
-
-    "nvim-web-devicons"
-
-    "vim-smoothie" # smooth scroll
-
-    "earthly-vim" # will be built on the fly from inputs
-    "onedark-nvim"
-
-    "lualine-nvim"
-    "bufferline-nvim"
-    "indent-blankline-nvim"
-    "comment-nvim"
-    "nvim-surround"
-    "nvim-tree-lua"
-    "telescope-nvim"
+    "onedark-nvim"        # theme
+    "nvim-tree-lua"       # explorer
+    "nvim-lspconfig"      # lsp-config
   ];
 
   optPlugins = with pkgs; [

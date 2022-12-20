@@ -23,17 +23,14 @@ local on_attach = function(client, bufnr)
     vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
 end
 
-local coq = require "coq"
 -- this part is telling Neovim to use the lsp server
 local servers = { 'terraformls', 'gopls', 'rnix', 'tsserver', 'rust_analyzer' }
 for _, lsp in pairs(servers) do
     require('lspconfig')[lsp].setup {
-      coq.lsp_ensure_capabilities {
         on_attach = on_attach,
         flags = {
           debounce_text_changes = 150,
         }
-      }
     }
 end
 
@@ -45,23 +42,3 @@ for type, icon in pairs(signs) do
     local hl = "DiagnosticSign" .. type
   vim.fn.sign_define(hl, { text = icon, texthl= hl, numhl = hl })
 end
-
-local lsp_signature = require('lsp_signature')
-require('lsp_signature').setup({
-  bind = true,
-  handler_opts = {
-    border = "rounded"
-  }
-})
-
--- updates while typing
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-  vim.lsp.diagnostic.on_publish_diagnostics, {
-  update_in_insert = true,
-  underline = true,
-  virtual_text = true,
-  signs = true,
-})
-
--- luasnip setup
-local luasnip = require 'luasnip'
