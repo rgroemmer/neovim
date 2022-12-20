@@ -18,3 +18,5 @@ require('onedark').setup {
   },
 }
 require('onedark').load()
+-- set termguicolors to enable highlight groups
+vim.opt.termguicolors = true
