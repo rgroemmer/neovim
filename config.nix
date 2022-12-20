@@ -1,12 +1,20 @@
 { pkgs }: {
   extraPackages = with pkgs; [
     gopls
+    golangci-lint
+    rnix-lsp
+    terraform-ls
+    rust-analyzer
   ];
 
   startPlugins = with pkgs; [
     "onedark-nvim"        # theme
     "nvim-tree-lua"       # explorer
     "nvim-lspconfig"      # lsp-config
+
+    "which-key-nvim"
+    "nvim-autopairs"
+    "bufferline-nvim"
   ];
 
   optPlugins = with pkgs; [

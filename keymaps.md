@@ -5,7 +5,8 @@
 | key    | action |
 | ------ | ------ |
 | space  | leader |
-| escape | jk     |
+| jk  | cmd mode     |
+| leader t  | select tab     |
 
 # explorer
 

@@ -82,7 +82,7 @@ vnoremap <F1> :set invfullscreen<CR>
 map <leader>q gqip
 
 " Visualize tabs and newlines
-set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
+set listchars=tab:\ \ ,extends:›,precedes:‹,nbsp:·,trail:·
 " Uncomment this to enable by default:
 set list " To enable by default
 " Or use your leader key + l to toggle on/off
@@ -92,7 +92,13 @@ map <leader>l :set list!<CR> " Toggle tabs and EOL
 set t_Co=256
 set background=dark
 
+" Make space for diagnostic signs
+set signcolumn=yes
+
+"filetypes
+au BufRead,BufNewFile *.nix set filetype=nix
 " ----------------------------# custom configuration #----------------------------
 
 " plugin mappings
 map <leader>e :NvimTreeFocus<CR>
+map <leader>t :BufferLinePick<CR>
