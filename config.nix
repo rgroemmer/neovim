@@ -1,5 +1,6 @@
 { pkgs }: {
   extraPackages = with pkgs; [
+    gopls
   ];
 
   startPlugins = with pkgs; [
