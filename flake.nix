@@ -25,7 +25,7 @@
           config = { allowUnfree = true; };
         };
 
-        config = import ./plugins.nix { inherit pkgs; };
+        config = import ./config.nix { inherit pkgs; };
 
         # installs a vim plugin from git
         plugin = with pkgs; repo: vimUtils.buildVimPluginFrom2Nix {
@@ -56,17 +56,7 @@
             # import your individual vim config files here
             # you can import from files
             # or directly add the config here as a string
-            customRC = builtins.concatStringsSep "\n" [
-              (lib.strings.fileContents ./config.vim)
-              ''
-                lua << EOF
-                ${lib.strings.fileContents ./config.lua}
-                EOF
-              ''
-              ''
-                " you can also directly write your configuration here
-              ''
-            ];
+            customRC = neovimConfig;
             packages.myVimPackage = with vimPlugins; {
               start = pluginMapper startPlugins ++ [
                 (nvim-treesitter.withPlugins (plugins: tree-sitter.allGrammars))
