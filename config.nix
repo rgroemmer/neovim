@@ -15,6 +15,7 @@
     "which-key-nvim"
     "nvim-autopairs"
     "bufferline-nvim"
+    "lualine-nvim"
   ];
 
   optPlugins = with pkgs; [
