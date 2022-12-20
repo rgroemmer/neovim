@@ -2,7 +2,7 @@
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
---- theme 
+-- theme 
 require('onedark').setup {
   style = 'deep',
   colors = {
@@ -16,12 +16,12 @@ require('onedark').setup {
     background = true,    -- use background color for virtual text
   },
 }
+
 require('onedark').load()
 -- set termguicolors to enable highlight groups
 vim.opt.termguicolors = true
 
-
---- explorer
+-- explorer
 require('nvim-tree').setup({
   open_on_setup_file = true,
   view = {

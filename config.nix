@@ -1,15 +1,14 @@
 { pkgs }: {
   extraPackages = with pkgs; [
-
   ];
 
   startPlugins = with pkgs; [
     "onedark-nvim"        # theme
     "nvim-tree-lua"       # explorer
+    "nvim-lspconfig"      # lsp-config
   ];
 
   optPlugins = with pkgs; [
-
   ];
 
   # build neovim config
