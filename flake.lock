@@ -31,22 +31,6 @@
         "type": "github"
       }
     },
-    "go-ray": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1669531723,
-        "narHash": "sha256-PWh7mQQc81ExxsXkh5cEbVzHd8wXuNXrBMlFBcJRGG0=",
-        "owner": "ray-x",
-        "repo": "go.nvim",
-        "rev": "02943e53160148f4690cbdfadffa84b833432152",
-        "type": "github"
-      },
-      "original": {
-        "owner": "ray-x",
-        "repo": "go.nvim",
-        "type": "github"
-      }
-    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1669412140,
@@ -66,7 +50,6 @@
       "inputs": {
         "earthly-vim": "earthly-vim",
         "flake-utils": "flake-utils",
-        "go-ray": "go-ray",
         "nixpkgs": "nixpkgs"
       }
     }

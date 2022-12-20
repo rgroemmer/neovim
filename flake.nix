@@ -8,7 +8,6 @@
     # all plugins that are not present in nixpkgs.vimPlugins need to be added here
     # they get directly fetched from git and build on the fly
     "earthly-vim" = { url = "github:earthly/earthly.vim"; flake = false; };
-    "go-ray" = { url = "github:ray-x/go.nvim"; flake = false; };
   };
 
   outputs = { self, nixpkgs, flake-utils, ... }@inputs:
