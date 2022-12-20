@@ -133,7 +133,7 @@ require('nvim-autopairs').setup({
 
 require("which-key").setup {
   triggers_blacklist = {
-    i = {},
+    i = { "i" },
   },
 }
 
@@ -149,4 +149,8 @@ require('go').setup({
     capabilities = capabilities,
     -- other setups
   },
+})
+
+require("better_escape").setup({
+  mapping = {"ii"},
 })

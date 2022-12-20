@@ -24,6 +24,8 @@
     "cmp-nvim-lsp"
     "nvim-cmp"
 
+    "better-escape-nvim"
+
     # coq
     "coq_nvim"
     "coq-artifacts"
