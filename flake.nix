@@ -59,7 +59,7 @@
             customRC = neovimConfig;
             packages.myVimPackage = with vimPlugins; {
               start = pluginMapper startPlugins ++ [
-                (nvim-treesitter.withPlugins (plugins: tree-sitter.allGrammars))
+                nvim-treesitter.withAllGrammars
               ];
               opt = pluginMapper optPlugins;
             };
