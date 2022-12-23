@@ -17,7 +17,6 @@
     "which-key-nvim"
     "nvim-autopairs"
     "bufferline-nvim"
-    "nvim-treesitter"
     "lualine-nvim"
   ];
 
