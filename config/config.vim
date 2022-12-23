@@ -32,6 +32,8 @@ set visualbell
 " Encoding
 set encoding=utf-8
 
+set timeoutlen=500
+
 " Whitespace
 set wrap
 set textwidth=79
@@ -47,6 +49,13 @@ set scrolloff=3
 set backspace=indent,eol,start
 set matchpairs+=<:> " use % to jump between pairs
 runtime! macros/matchit.vim
+
+" Cursor line
+set cursorline
+hi cursorline cterm=none term=none
+autocmd WinEnter * setlocal cursorline
+autocmd WinLeave * setlocal nocursorline
+highlight CursorLine guibg=#303000 ctermbg=234
 
 " Allow hidden buffers
 set hidden
@@ -74,7 +83,7 @@ map <leader><space> :let @/=''<cr> " clear search
 " Remap help key.
 inoremap <F1> <ESC>:set invfullscreen<CR>a
 nnoremap <F1> :set invfullscreen<CR>
-vnoremap <F1> :set invfullscreen<CR>
+ noremap <F1> :set invfullscreen<CR>
 
 " Textmate holdouts
 
@@ -82,7 +91,7 @@ vnoremap <F1> :set invfullscreen<CR>
 map <leader>q gqip
 
 " Visualize tabs and newlines
-set listchars=tab:\ \ ,extends:›,precedes:‹,nbsp:·,trail:·
+set listchars=tab:→\ ,eol:¬,trail:·,extends:❯,precedes:❮,space:␣
 " Uncomment this to enable by default:
 set list " To enable by default
 " Or use your leader key + l to toggle on/off
@@ -97,8 +106,14 @@ set signcolumn=yes
 
 "filetypes
 au BufRead,BufNewFile *.nix set filetype=nix
+
+" highlight yank
+augroup highlight_yank
+    autocmd!
+    au TextYankPost * silent! lua vim.highlight.on_yank { higroup='IncSearch', timeout=200 }
+augroup END
 " ----------------------------# custom configuration #----------------------------
 
 " plugin mappings
-map <leader>e :NvimTreeFocus<CR>
+map <leader>e :NvimTreeToggle<CR>
 map <leader>t :BufferLinePick<CR>

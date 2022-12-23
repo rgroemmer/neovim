@@ -15,6 +15,10 @@ require('onedark').setup {
     undercurl = true,   -- use undercurl instead of underline for diagnostics
     background = true,    -- use background color for virtual text
   },
+  highlights = {
+    Whitespace = {fg = "#2B313B"},
+    NonText = {fg = "#2B313B"},
+  },
 }
 
 require('onedark').load()
@@ -23,7 +27,7 @@ vim.opt.termguicolors = true
 
 -- explorer
 require('nvim-tree').setup({
-  open_on_setup_file = true,
+  -- open_on_setup_file = true,
   view = {
     mappings = {
       list = {
