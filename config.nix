@@ -5,6 +5,8 @@
     rnix-lsp
     terraform-ls
     rust-analyzer
+
+    tree-sitter
   ];
 
   startPlugins = with pkgs; [
