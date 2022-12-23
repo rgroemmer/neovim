@@ -38,22 +38,22 @@ require('nvim-tree').setup({
 })
 
 -- treesitter
-require('nvim-treesitter.configs').setup {
-  -- they are managed by nix
-  auto_install = false,
-  --ensure_installed = "all",
-  highlight = {
-    enable = true,
-    additional_vim_regex_highlighting = false,
-  },
-  indent = { enable = true },
-  rainbow = {
-    enable = true,
-    extended_mode = true,
-    -- prevents lagging in large files
-    max_file_lines = 1000,
-  },
-}
+--require('nvim-treesitter.configs').setup {
+--  -- they are managed by nix
+--  auto_install = false,
+--  --ensure_installed = "all",
+--  highlight = {
+--    enable = true,
+--    additional_vim_regex_highlighting = false,
+--  },
+--  indent = { enable = true },
+--  rainbow = {
+--    enable = true,
+--    extended_mode = true,
+--    -- prevents lagging in large files
+--    max_file_lines = 1000,
+--  },
+--}
 
 
 -- tab manager

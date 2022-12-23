@@ -5,6 +5,8 @@
     rnix-lsp
     terraform-ls
     rust-analyzer
+
+    tree-sitter
   ];
 
   startPlugins = with pkgs; [
@@ -15,6 +17,7 @@
     "which-key-nvim"
     "nvim-autopairs"
     "bufferline-nvim"
+    "nvim-treesitter"
     "lualine-nvim"
   ];
 
