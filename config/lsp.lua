@@ -32,7 +32,10 @@ local lspconfig = require('lspconfig')
 local coq = require "coq"
 
 -- set xdg dir for coqDeps since nix is readonly
-vim.g.coq_settings = { xdg = true }
+vim.g.coq_settings = {
+  xdg = true,
+  auto_start = 'shut-up',
+}
 
 local servers = {
   gopls = {},
