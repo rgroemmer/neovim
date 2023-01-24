@@ -11,7 +11,6 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 local on_attach = function(client, bufnr)
     -- Enable completion triggered by <c-x><c-o>
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-
     local bufopts = { noremap=true, silent=true, buffer=bufnr }
     vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
@@ -30,6 +29,11 @@ local on_attach = function(client, bufnr)
 end
 
 local lspconfig = require('lspconfig')
+local coq = require "coq"
+
+-- set xdg dir for coqDeps since nix is readonly
+vim.g.coq_settings = { xdg = true }
+
 local servers = {
   gopls = {},
   rnix = {},
@@ -38,15 +42,16 @@ local servers = {
 }
 
 local caps = vim.lsp.protocol.make_client_capabilities()
---local capabilities = require('cmp_nvim_lsp').default_capabilities(caps)
 
 for key, value in pairs(servers) do
   lspconfig[key].setup {
+    coq.lsp_ensure_capabilities {
     on_attach = on_attach,
     capabilities = caps,
     settings = value.settings,
     cmd = value.cmd,
     root_dir = value.root_dir,
+    } 
   }
 end
 

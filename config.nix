@@ -7,12 +7,18 @@
     rust-analyzer
 
     tree-sitter
+    python39
+    sqlite
   ];
 
   startPlugins = with pkgs; [
     "onedark-nvim"        # theme
     "nvim-tree-lua"       # explorer
     "nvim-lspconfig"      # lsp-config
+
+    "coq_nvim"
+    "coq-artifacts"
+    "coq-thirdparty"
 
     "which-key-nvim"
     "nvim-autopairs"
