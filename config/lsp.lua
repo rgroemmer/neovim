@@ -1,4 +1,10 @@
 -- lsp config
+-- lspconfig
+-- updates while typing
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+  vim.lsp.diagnostic.on_publish_diagnostics, {
+  update_in_insert = true,
+})
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer

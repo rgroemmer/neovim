@@ -18,6 +18,7 @@
     "nvim-autopairs"
     "bufferline-nvim"
     "lualine-nvim"
+    "indent-blankline-nvim"
   ];
 
   optPlugins = with pkgs; [

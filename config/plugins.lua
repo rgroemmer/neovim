@@ -35,6 +35,9 @@ require('nvim-tree').setup({
       },
     },
   },
+   git = {
+     ignore = false;
+   },
 })
 
 -- treesitter
@@ -54,7 +57,6 @@ require('nvim-treesitter.configs').setup {
     max_file_lines = 1000,
   },
 }
-
 
 -- tab manager
 require('bufferline').setup({
@@ -97,3 +99,20 @@ require('lualine').setup({
     section_separators = '',
   },
 })
+
+vim.opt.termguicolors = true
+vim.cmd [[highlight IndentBlanklineIndent1 guibg=#1f2329 gui=nocombine]]
+vim.cmd [[highlight IndentBlanklineIndent2 guibg=#191C21 gui=nocombine]]
+
+require("indent_blankline").setup {
+  char = "",
+  char_highlight_list = {
+    "IndentBlanklineIndent1",
+    "IndentBlanklineIndent2",
+  },
+  space_char_highlight_list = {
+    "IndentBlanklineIndent1",
+    "IndentBlanklineIndent2",
+  },
+  show_trailing_blankline_indent = false,
+}
