@@ -1,11 +1,17 @@
 -- lsp config
 -- lspconfig
 -- updates while typing
+
+-- set xdg dir for coqDeps since nix is readonly
+vim.g.coq_settings = {
+  xdg = true,
+  auto_start = true,
+}
+
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
   update_in_insert = true,
 })
-
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
@@ -28,14 +34,8 @@ local on_attach = function(client, bufnr)
     vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
 end
 
-local lspconfig = require('lspconfig')
 local coq = require "coq"
-
--- set xdg dir for coqDeps since nix is readonly
-vim.g.coq_settings = {
-  xdg = true,
-  auto_start = 'shut-up',
-}
+local lspconfig = require('lspconfig')
 
 local servers = {
   gopls = {},

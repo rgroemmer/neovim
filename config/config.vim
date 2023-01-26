@@ -117,3 +117,4 @@ augroup END
 " plugin mappings
 map <leader>e :NvimTreeToggle<CR>
 map <leader>t :BufferLinePick<CR>
+
