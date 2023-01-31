@@ -23,6 +23,7 @@
     "coq_nvim"
     "coq-artifacts"
     "coq-thirdparty"
+    "lsp_signature-nvim"
 
     "which-key-nvim"
     "nvim-autopairs"
