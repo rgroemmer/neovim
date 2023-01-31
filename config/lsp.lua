@@ -54,6 +54,7 @@ for key, value in pairs(servers) do
     settings = value.settings,
     cmd = value.cmd,
     root_dir = value.root_dir,
+    require 'illuminate'.on_attach(client)
     } 
   }
 end
