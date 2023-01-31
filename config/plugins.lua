@@ -19,7 +19,11 @@ require('onedark').setup {
     Whitespace = {fg = "#2B313B"},
     NonText = {fg = "#2B313B"},
     SpecialKey = {fg = "#2B313B"},
-    matchParen = {fg = "#FFFFFF"},
+    matchParen = {bg = "#FFFFFF"},
+    -- highlight group for Illuminate
+    IlluminatedWordText = {bg = "#373F4D"},
+    IlluminatedWordRead = {bg = "#373F4D"},
+    IlluminatedWordWrite = {bg = "#373F4D"}
   },
 }
 
