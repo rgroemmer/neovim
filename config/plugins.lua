@@ -116,33 +116,16 @@ vim.opt.list = true
 vim.opt.listchars:append "eol:↴"
 
 require("indent_blankline").setup {
-    space_char_blankline = " ",
-    char_highlight_list = {
-        "IndentBlanklineIndent1",
-        "IndentBlanklineIndent2",
-        "IndentBlanklineIndent3",
-        "IndentBlanklineIndent4",
-        "IndentBlanklineIndent5",
-        "IndentBlanklineIndent6",
-    },
+  space_char_blankline = " ",
+  char_highlight_list = {
+    "IndentBlanklineIndent1",
+    "IndentBlanklineIndent2",
+    "IndentBlanklineIndent3",
+    "IndentBlanklineIndent4",
+    "IndentBlanklineIndent5",
+    "IndentBlanklineIndent6",
+  },
 }
-
---vim.opt.termguicolors = true
---vim.cmd [[highlight IndentBlanklineIndent1 guibg=#1f2329 gui=nocombine]]
---vim.cmd [[highlight IndentBlanklineIndent2 guibg=#191C21 gui=nocombine]]
---
---require("indent_blankline").setup {
---  char = "",
---  char_highlight_list = {
---    "IndentBlanklineIndent1",
---    "IndentBlanklineIndent2",
---  },
---  space_char_highlight_list = {
---    "IndentBlanklineIndent1",
---    "IndentBlanklineIndent2",
---  },
---  show_trailing_blankline_indent = false,
---}
 
 local async = require "plenary.async"
 
@@ -152,3 +135,4 @@ vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 
+--require('illuminate').configure()

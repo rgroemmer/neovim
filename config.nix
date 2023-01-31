@@ -34,6 +34,7 @@
     "telescope-nvim"
 
     "nvim-ts-rainbow" 
+    "vim-illuminate"
   ];
 
   optPlugins = with pkgs; [
