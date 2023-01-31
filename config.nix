@@ -9,6 +9,10 @@
     tree-sitter
     python39
     sqlite
+
+    fzf
+    bat
+    ripgrep
   ];
 
   startPlugins = with pkgs; [
@@ -25,6 +29,11 @@
     "bufferline-nvim"
     "lualine-nvim"
     "indent-blankline-nvim"
+
+    "plenary-nvim"
+    "telescope-nvim"
+
+    "nvim-ts-rainbow" 
   ];
 
   optPlugins = with pkgs; [
