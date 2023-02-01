@@ -34,29 +34,29 @@ local on_attach = function(client, bufnr)
     vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
 end
 
-local coq = require "coq"
 local lspconfig = require('lspconfig')
+local coq = require "coq"
 
 local servers = {
   gopls = {},
   rnix = {},
   terraformls = {},
   rust_analyzer = {},
+  yamlls = {},
 }
-
-local caps = vim.lsp.protocol.make_client_capabilities()
-
-for key, value in pairs(servers) do
-  lspconfig[key].setup {
-    coq.lsp_ensure_capabilities {
-    on_attach = on_attach,
-    capabilities = caps,
-    settings = value.settings,
-    cmd = value.cmd,
-    root_dir = value.root_dir,
-    require 'illuminate'.on_attach(client)
-    } 
-  }
+for server, config in pairs(servers) do
+  lspconfig[server].setup(coq.lsp_ensure_capabilities(
+    vim.tbl_deep_extend("force", {
+      on_attach = lsp_on_attach,
+      capabilities = capabilities,
+      flags = {debounce_text_changes = 150},
+      init_options = config
+    }, {}))
+  )
+  local cfg = lspconfig[server]
+    if not (cfg and cfg.cmd and vim.fn.executable(cfg.cmd[1]) == 1) then
+      print(server .. ": cmd not found: " .. vim.inspect(cfg.cmd))
+    end
 end
 
 require "lsp_signature".setup({

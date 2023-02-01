@@ -4,11 +4,22 @@ vim.g.loaded_netrwPlugin = 1
 
 -- theme 
 require('onedark').setup {
-  style = 'darker',
+  style = 'deep',
   colors = {
     red = "#e06c75",
     grey = "#7a7f89",
   },
+
+  toggle_style_key = "<leader>ts",
+
+  code_style = {
+      comments = 'none',
+      keywords = 'none',
+      functions = 'none',
+      strings = 'none',
+      variables = 'none'
+  },
+
    -- Plugins Config --
   diagnostics = {
     darker = false, -- darker colors for diagnostic

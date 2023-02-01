@@ -5,6 +5,8 @@
     rnix-lsp
     terraform-ls
     rust-analyzer
+    nodePackages.yaml-language-server
+    nodejs
 
     tree-sitter
     python39
@@ -16,7 +18,7 @@
   ];
 
   startPlugins = with pkgs; [
-    "onedark-nvim"        # theme
+    "onedark-nvim"
     "nvim-tree-lua"       # explorer
     "nvim-lspconfig"      # lsp-config
 
