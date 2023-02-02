@@ -4,11 +4,22 @@ vim.g.loaded_netrwPlugin = 1
 
 -- theme 
 require('onedark').setup {
-  style = 'darker',
+  style = 'deep',
   colors = {
     red = "#e06c75",
     grey = "#7a7f89",
   },
+
+  toggle_style_key = "<leader>ts",
+
+  code_style = {
+      comments = 'none',
+      keywords = 'none',
+      functions = 'none',
+      strings = 'none',
+      variables = 'none'
+  },
+
    -- Plugins Config --
   diagnostics = {
     darker = false, -- darker colors for diagnostic
@@ -16,8 +27,14 @@ require('onedark').setup {
     background = true,    -- use background color for virtual text
   },
   highlights = {
-    Whitespace = {fg = "#2B313B"},
+    Whitespace = {fg = "#2B313B"} ,
     NonText = {fg = "#2B313B"},
+    SpecialKey = {fg = "#2B313B"},
+    matchParen = {bg = "#FFFFFF"},
+    -- highlight group for Illuminate
+    IlluminatedWordText = {bg = "#373F4D"},
+    IlluminatedWordRead = {bg = "#373F4D"},
+    IlluminatedWordWrite = {bg = "#373F4D"}
   },
 }
 
@@ -52,9 +69,11 @@ require('nvim-treesitter.configs').setup {
   indent = { enable = true },
   rainbow = {
     enable = true,
-    extended_mode = true,
-    -- prevents lagging in large files
-    max_file_lines = 1000,
+    -- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for
+    extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
+    max_file_lines = nil, -- Do not enable for files with more than n lines, int
+    -- colors = {}, -- table of hex strings
+    -- termcolors = {} -- table of colour name strings
   },
 }
 
@@ -87,6 +106,25 @@ require("which-key").setup {
     i = { "i" },
   },
 }
+local wk = require('which-key')
+
+wk.register({
+  f = {
+    name = "find", -- optional group name
+    f = { "find files" },
+    g = { "ripgrep" },
+    a = { "format file" },
+  }}, { prefix = "<leader>" }
+)
+
+wk.register({
+  g = {
+    d = { "goto definition" },
+    D = { "goto declaration" },
+    r = { "goto references" },
+    t = { "goto type definition" },
+  }}
+)
 
 -- statusbar
 vim.opt.showmode = false
@@ -101,18 +139,34 @@ require('lualine').setup({
 })
 
 vim.opt.termguicolors = true
-vim.cmd [[highlight IndentBlanklineIndent1 guibg=#1f2329 gui=nocombine]]
-vim.cmd [[highlight IndentBlanklineIndent2 guibg=#191C21 gui=nocombine]]
+vim.cmd [[highlight IndentBlanklineIndent1 guifg=#E06C75 gui=nocombine]]
+vim.cmd [[highlight IndentBlanklineIndent2 guifg=#E5C07B gui=nocombine]]
+vim.cmd [[highlight IndentBlanklineIndent3 guifg=#98C379 gui=nocombine]]
+vim.cmd [[highlight IndentBlanklineIndent4 guifg=#56B6C2 gui=nocombine]]
+vim.cmd [[highlight IndentBlanklineIndent5 guifg=#61AFEF gui=nocombine]]
+vim.cmd [[highlight IndentBlanklineIndent6 guifg=#C678DD gui=nocombine]]
+
+vim.opt.list = true
+vim.opt.listchars:append "eol:↴"
 
 require("indent_blankline").setup {
-  char = "",
+  space_char_blankline = " ",
   char_highlight_list = {
     "IndentBlanklineIndent1",
     "IndentBlanklineIndent2",
+    "IndentBlanklineIndent3",
+    "IndentBlanklineIndent4",
+    "IndentBlanklineIndent5",
+    "IndentBlanklineIndent6",
   },
-  space_char_highlight_list = {
-    "IndentBlanklineIndent1",
-    "IndentBlanklineIndent2",
-  },
-  show_trailing_blankline_indent = false,
 }
+
+local async = require "plenary.async"
+
+local builtin = require('telescope.builtin')
+vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
+vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
+vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+
+

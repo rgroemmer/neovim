@@ -5,26 +5,39 @@
     rnix-lsp
     terraform-ls
     rust-analyzer
+    nodePackages.yaml-language-server
+    nodejs
 
     tree-sitter
     python39
     sqlite
+
+    fzf
+    bat
+    ripgrep
   ];
 
   startPlugins = with pkgs; [
-    "onedark-nvim"        # theme
+    "onedark-nvim"
     "nvim-tree-lua"       # explorer
     "nvim-lspconfig"      # lsp-config
 
     "coq_nvim"
     "coq-artifacts"
     "coq-thirdparty"
+    "lsp_signature-nvim"
 
     "which-key-nvim"
     "nvim-autopairs"
     "bufferline-nvim"
     "lualine-nvim"
     "indent-blankline-nvim"
+
+    "plenary-nvim"
+    "telescope-nvim"
+
+    "nvim-ts-rainbow" 
+    "vim-illuminate"
   ];
 
   optPlugins = with pkgs; [
