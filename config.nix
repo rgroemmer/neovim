@@ -3,7 +3,7 @@
     gopls
     golangci-lint
     rnix-lsp
-    terraform-ls
+    terraform-lsp
     rust-analyzer
     nodePackages.yaml-language-server
     nodejs
