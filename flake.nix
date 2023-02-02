@@ -33,11 +33,6 @@
           version = "main";
           src = builtins.getAttr repo inputs;
         };
-
-        # uses plugin from vimPlugins or builds it from inputs if not found
-        pluginMapper = with pkgs; plugins: map
-          (name: if lib.hasAttr name vimPlugins then lib.getAttr name vimPlugins else (plugin name))
-          plugins;
       in
       with config; with pkgs; rec {
         apps.default = flake-utils.lib.mkApp {
@@ -58,10 +53,8 @@
             # or directly add the config here as a string
             customRC = neovimConfig;
             packages.myVimPackage = with vimPlugins; {
-              start = pluginMapper startPlugins ++ [
-                nvim-treesitter.withAllGrammars
-              ];
-              opt = pluginMapper optPlugins;
+              start = startPlugins;
+              opt = optPlugins;
             };
           };
         };

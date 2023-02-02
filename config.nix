@@ -17,27 +17,29 @@
     ripgrep
   ];
 
-  startPlugins = with pkgs; [
-    "onedark-nvim"
-    "nvim-tree-lua"       # explorer
-    "nvim-lspconfig"      # lsp-config
+  startPlugins = with pkgs.vimPlugins; [
+    onedark-nvim
+    nvim-tree-lua      # explorer
+    nvim-lspconfig      # lsp-config
 
-    "coq_nvim"
-    "coq-artifacts"
-    "coq-thirdparty"
-    "lsp_signature-nvim"
+    nvim-treesitter.withAllGrammars
 
-    "which-key-nvim"
-    "nvim-autopairs"
-    "bufferline-nvim"
-    "lualine-nvim"
-    "indent-blankline-nvim"
+    coq_nvim
+    coq-artifacts
+    coq-thirdparty
+    lsp_signature-nvim
 
-    "plenary-nvim"
-    "telescope-nvim"
+    which-key-nvim
+    nvim-autopairs
+    bufferline-nvim
+    lualine-nvim
+    indent-blankline-nvim
 
-    "nvim-ts-rainbow" 
-    "vim-illuminate"
+    plenary-nvim
+    telescope-nvim
+
+    nvim-ts-rainbow 
+    vim-illuminate
   ];
 
   optPlugins = with pkgs; [
