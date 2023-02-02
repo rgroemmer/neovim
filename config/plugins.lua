@@ -27,7 +27,7 @@ require('onedark').setup {
     background = true,    -- use background color for virtual text
   },
   highlights = {
-    Whitespace = {fg = "#2B313B"},
+    Whitespace = {fg = "#2B313B"} ,
     NonText = {fg = "#2B313B"},
     SpecialKey = {fg = "#2B313B"},
     matchParen = {bg = "#FFFFFF"},
@@ -106,6 +106,25 @@ require("which-key").setup {
     i = { "i" },
   },
 }
+local wk = require('which-key')
+
+wk.register({
+  f = {
+    name = "find", -- optional group name
+    f = { "find files" },
+    g = { "ripgrep" },
+    a = { "format file" },
+  }}, { prefix = "<leader>" }
+)
+
+wk.register({
+  g = {
+    d = { "goto definition" },
+    D = { "goto declaration" },
+    r = { "goto references" },
+    t = { "goto type definition" },
+  }}
+)
 
 -- statusbar
 vim.opt.showmode = false

@@ -47,7 +47,7 @@ local servers = {
 for server, config in pairs(servers) do
   lspconfig[server].setup(coq.lsp_ensure_capabilities(
     vim.tbl_deep_extend("force", {
-      on_attach = lsp_on_attach,
+      on_attach = on_attach,
       capabilities = capabilities,
       flags = {debounce_text_changes = 150},
       init_options = config
