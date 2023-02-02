@@ -80,6 +80,8 @@ set smartcase
 set showmatch
 map <leader><space> :let @/=''<cr> " clear search
 
+set undofile
+
 " Remap help key.
 inoremap <F1> <ESC>:set invfullscreen<CR>a
 nnoremap <F1> :set invfullscreen<CR>
