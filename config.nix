@@ -1,7 +1,7 @@
 { pkgs }: {
   extraPackages = with pkgs; [
     gopls
-    golangci-lint
+    golangci-lint-langserver
     rnix-lsp
     terraform-lsp
     rust-analyzer

@@ -38,11 +38,30 @@ vim.g.coq_settings = {
   auto_start = 'shut-up',
 }
 
-local servers = { 'gopls', 'golangci_lint_ls', 'rust_analyzer','rnix', 'yamlls', 'terraform_lsp' }
-for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup(require('coq').lsp_ensure_capabilities({
-    on_attach = on_attach,
-  }))
+local coq = require "coq"
+
+local servers = {
+  gopls = {},
+  rnix = {},
+  terraformls = {},
+  rust_analyzer = {},
+  yamlls = {
+    filetypes = {"yaml", "kubernetes"},
+  },
+}
+for server, config in pairs(servers) do
+  lspconfig[server].setup(coq.lsp_ensure_capabilities(
+    vim.tbl_deep_extend("force", {
+      on_attach = on_attach,
+      capabilities = capabilities,
+      flags = {debounce_text_changes = 150},
+      filetypes = config.filetypes,
+    }, {}))
+  )
+  local cfg = lspconfig[server]
+    if not (cfg and cfg.cmd and vim.fn.executable(cfg.cmd[1]) == 1) then
+      print(server .. ": cmd not found: " .. vim.inspect(cfg.cmd))
+    end
 end
 
 require "lsp_signature".setup({
