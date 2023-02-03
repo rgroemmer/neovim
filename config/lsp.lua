@@ -2,7 +2,6 @@
 -- lspconfig
 -- updates while typing
 
-
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
   update_in_insert = true,
@@ -31,15 +30,6 @@ end
 
 local lspconfig = require('lspconfig')
 
--- coq autocompletion
--- set xdg dir for coqDeps since nix is readonly
-vim.g.coq_settings = {
-  xdg = true,
-  auto_start = 'shut-up',
-}
-
-local coq = require "coq"
-
 local servers = {
   gopls = {},
   rnix = {},
@@ -50,14 +40,12 @@ local servers = {
   },
 }
 for server, config in pairs(servers) do
-  lspconfig[server].setup(coq.lsp_ensure_capabilities(
-    vim.tbl_deep_extend("force", {
+  lspconfig[server].setup {
       on_attach = on_attach,
       capabilities = capabilities,
       flags = {debounce_text_changes = 150},
       filetypes = config.filetypes,
-    }, {}))
-  )
+  }
   local cfg = lspconfig[server]
     if not (cfg and cfg.cmd and vim.fn.executable(cfg.cmd[1]) == 1) then
       print(server .. ": cmd not found: " .. vim.inspect(cfg.cmd))

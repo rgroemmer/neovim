@@ -3,7 +3,7 @@
     gopls
     golangci-lint-langserver
     rnix-lsp
-    terraform-lsp
+    terraform-ls
     rust-analyzer
     nodePackages.yaml-language-server
     nodejs
@@ -24,9 +24,6 @@
 
     nvim-treesitter.withAllGrammars
 
-    coq_nvim
-    coq-artifacts
-    coq-thirdparty
     lsp_signature-nvim
 
     which-key-nvim
