@@ -24,6 +24,17 @@
 
     nvim-treesitter.withAllGrammars
 
+    nvim-cmp
+    cmp-nvim-lsp
+    cmp-path
+    cmp-buffer
+    cmp-cmdline
+    cmp-git
+
+    cmp-nvim-ultisnips
+    ultisnips
+
+
     lsp_signature-nvim
 
     which-key-nvim

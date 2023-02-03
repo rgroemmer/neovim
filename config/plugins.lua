@@ -30,7 +30,7 @@ require('onedark').setup {
     Whitespace = {fg = "#2B313B"} ,
     NonText = {fg = "#2B313B"},
     SpecialKey = {fg = "#2B313B"},
-    matchParen = {bg = "#FFFFFF"},
+    matchParen = {bg = "#7eb9f6"},
     -- highlight group for Illuminate
     IlluminatedWordText = {bg = "#373F4D"},
     IlluminatedWordRead = {bg = "#373F4D"},
