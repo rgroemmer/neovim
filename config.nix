@@ -18,7 +18,8 @@
   ];
 
   startPlugins = with pkgs.vimPlugins; [
-    onedark-nvim
+    edge # theme
+
     nvim-tree-lua      # explorer
     nvim-lspconfig      # lsp-config
 
