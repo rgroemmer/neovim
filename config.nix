@@ -34,6 +34,10 @@
     cmp-nvim-ultisnips
     ultisnips
 
+    vim-snippets
+    cmp-vsnip
+    vim-vsnip
+    friendly-snippets
 
     lsp_signature-nvim
 
