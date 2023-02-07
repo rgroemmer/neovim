@@ -1,9 +1,9 @@
 { pkgs }: {
   extraPackages = with pkgs; [
     gopls
-    golangci-lint
+    golangci-lint-langserver
     rnix-lsp
-    terraform-lsp
+    terraform-ls
     rust-analyzer
     nodePackages.yaml-language-server
     nodejs
@@ -17,27 +17,42 @@
     ripgrep
   ];
 
-  startPlugins = with pkgs; [
-    "onedark-nvim"
-    "nvim-tree-lua"       # explorer
-    "nvim-lspconfig"      # lsp-config
+  startPlugins = with pkgs.vimPlugins; [
+    edge # theme
 
-    "coq_nvim"
-    "coq-artifacts"
-    "coq-thirdparty"
-    "lsp_signature-nvim"
+    nvim-tree-lua      # explorer
+    nvim-lspconfig      # lsp-config
 
-    "which-key-nvim"
-    "nvim-autopairs"
-    "bufferline-nvim"
-    "lualine-nvim"
-    "indent-blankline-nvim"
+    nvim-treesitter.withAllGrammars
 
-    "plenary-nvim"
-    "telescope-nvim"
+    nvim-cmp
+    cmp-nvim-lsp
+    cmp-path
+    cmp-buffer
+    cmp-cmdline
+    cmp-git
 
-    "nvim-ts-rainbow" 
-    "vim-illuminate"
+    cmp-nvim-ultisnips
+    ultisnips
+
+    vim-snippets
+    cmp-vsnip
+    vim-vsnip
+    friendly-snippets
+
+    lsp_signature-nvim
+
+    which-key-nvim
+    nvim-autopairs
+    bufferline-nvim
+    lualine-nvim
+    indent-blankline-nvim
+
+    plenary-nvim
+    telescope-nvim
+
+    nvim-ts-rainbow 
+    vim-illuminate
   ];
 
   optPlugins = with pkgs; [

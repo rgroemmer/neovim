@@ -1,4 +1,5 @@
 " ----------------------------# default configuration #----------------------------
+colorscheme edge
 
 " Don't try to be vi compatible
 set nocompatible
@@ -123,3 +124,4 @@ map <leader>t :BufferLinePick<CR>
 map <leader>l :BufferLineCycleNext<CR>
 map <leader>h :BufferLineCyclePrev<CR>
 nnoremap <Leader>e <C-w>w
+
