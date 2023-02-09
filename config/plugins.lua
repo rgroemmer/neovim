@@ -118,11 +118,26 @@ wk.register({
 )
 
 wk.register({
+  s = {
+    name = "substitute", -- optional group name
+    v = { "visual confirm" },
+    w = { "all words under cursor" },
+    a = { "visual all" },
+  }}, { prefix = "<leader>" }
+)
+
+wk.register({
   g = {
     d = { "goto definition" },
     D = { "goto declaration" },
     r = { "goto references" },
     t = { "goto type definition" },
+  }}
+)
+
+wk.register({
+  c = {
+    a = { "show code actions" },
   }}
 )
 
