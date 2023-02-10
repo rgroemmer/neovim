@@ -1,4 +1,5 @@
 " ----------------------------# default configuration #----------------------------
+colorscheme edge
 
 " Don't try to be vi compatible
 set nocompatible
@@ -132,5 +133,4 @@ augroup highlight_yank
 augroup END
 
 " ----------------------------# custom configuration #----------------------------
-
 
