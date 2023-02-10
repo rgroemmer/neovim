@@ -16,7 +16,6 @@
     bat
     ripgrep
   ];
-
   startPlugins = with pkgs.vimPlugins; [
     edge # theme
 

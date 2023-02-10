@@ -15,8 +15,24 @@ filetype plugin indent on
 
 let mapleader = " "
 inoremap jk <Esc>
+vnoremap jk <Esc>
 " disable esc to learn above
 imap <Esc> <NOP>
+
+" substitute commands
+nnoremap <LEADER>sw :%s/<C-r><C-w>//g<left><left>
+vnoremap <LEADER>sv "hy:%s/<C-r>h//gc<left><left><left>
+vnoremap <LEADER>sa "hy:%s/<C-r>h//g<left><left>
+
+" plugin mappings
+map <leader>ee :NvimTreeToggle<CR>
+map <leader>t :BufferLinePick<CR>
+map <leader>l :BufferLineCycleNext<CR>
+map <leader>h :BufferLineCyclePrev<CR>
+nnoremap <Leader>e <C-w>w
+
+tnoremap jk <C-\><C-n>
+
 
 " Security
 set modelines=0
@@ -117,11 +133,4 @@ augroup highlight_yank
 augroup END
 
 " ----------------------------# custom configuration #----------------------------
-
-" plugin mappings
-map <leader>ee :NvimTreeToggle<CR>
-map <leader>t :BufferLinePick<CR>
-map <leader>l :BufferLineCycleNext<CR>
-map <leader>h :BufferLineCyclePrev<CR>
-nnoremap <Leader>e <C-w>w
 
