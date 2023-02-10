@@ -1,30 +1,61 @@
 { pkgs }: {
   extraPackages = with pkgs; [
     gopls
-    golangci-lint
+    golangci-lint-langserver
     rnix-lsp
     terraform-ls
     rust-analyzer
+    nodePackages.yaml-language-server
+    nodejs
 
     tree-sitter
     python39
     sqlite
-  ];
 
-  startPlugins = with pkgs; [
-    "onedark-nvim"        # theme
-    "nvim-tree-lua"       # explorer
-    "nvim-lspconfig"      # lsp-config
+    fzf
+    bat
+    ripgrep
+  ];
+  startPlugins = with pkgs.vimPlugins; [
+    edge # theme
+
+    nvim-tree-lua      # explorer
+    nvim-lspconfig      # lsp-config
+
+    nvim-treesitter.withAllGrammars
+
+    nvim-cmp
+    cmp-nvim-lsp
+    cmp-path
+    cmp-buffer
+    cmp-cmdline
+    cmp-git
+
+    cmp-nvim-ultisnips
+    ultisnips
+
+    vim-snippets
+    cmp-vsnip
+    vim-vsnip
+    friendly-snippets
+
+    lsp_signature-nvim
+
+    which-key-nvim
+    nvim-autopairs
+    bufferline-nvim
+    lualine-nvim
+    indent-blankline-nvim
+
+    plenary-nvim
+    telescope-nvim
 
     "coq_nvim"
     "coq-artifacts"
     "coq-thirdparty"
-
-    "which-key-nvim"
-    "nvim-autopairs"
-    "bufferline-nvim"
-    "lualine-nvim"
-    "indent-blankline-nvim"
+    
+    nvim-ts-rainbow 
+    vim-illuminate
   ];
 
   optPlugins = with pkgs; [

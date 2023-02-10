@@ -1,7 +1,6 @@
 -- lsp config
 -- lspconfig
 -- updates while typing
-
 -- set xdg dir for coqDeps since nix is readonly
 vim.g.coq_settings = {
   xdg = true,
@@ -42,21 +41,30 @@ local servers = {
   rnix = {},
   terraformls = {},
   rust_analyzer = {},
+  yamlls = {},
 }
 
-local caps = vim.lsp.protocol.make_client_capabilities()
+--local caps = vim.lsp.protocol.make_client_capabilities()
+--local capabilities = require('cmp_nvim_lsp').default_capabilities(caps)
 
 for key, value in pairs(servers) do
   lspconfig[key].setup {
     coq.lsp_ensure_capabilities {
     on_attach = on_attach,
-    capabilities = caps,
+    capabilities = capabilities,
     settings = value.settings,
     cmd = value.cmd,
     root_dir = value.root_dir,
     } 
   }
 end
+
+require "lsp_signature".setup({
+  bind = true, -- This is mandatory, otherwise border config won't get registered.
+  handler_opts = {
+    border = "rounded"
+  }
+})
 
 -- this is for diagnositcs signs on the line number column
 -- use this to beautify the plain E W signs to more fun ones
