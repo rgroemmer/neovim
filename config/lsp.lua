@@ -46,7 +46,13 @@ local servers = {
   terraformls = {},
   rust_analyzer = {},
   yamlls = {
-    filetypes = {"yaml", "kubernetes"},
+    settings = {
+      yaml = {
+        schemas = {
+          kubernetes = "/*.yaml"
+        },
+      },
+    },
   },
 }
 for server, config in pairs(servers) do
@@ -55,7 +61,7 @@ for server, config in pairs(servers) do
       on_attach = on_attach,
       capabilities = capabilities,
       flags = {debounce_text_changes = 150},
-      filetypes = config.filetypes,
+      settings = config.settings,
     }, {}))
   )
   local cfg = lspconfig[server]
@@ -79,3 +85,4 @@ for type, icon in pairs(signs) do
     local hl = "DiagnosticSign" .. type
   vim.fn.sign_define(hl, { text = icon, texthl= hl, numhl = hl })
 end
+
