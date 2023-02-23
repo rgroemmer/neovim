@@ -134,3 +134,9 @@ augroup END
 
 " ----------------------------# custom configuration #----------------------------
 
+" plugin mappings
+map <leader>ee :NvimTreeToggle<CR>
+map <leader>t :BufferLinePick<CR>
+map <leader>l :BufferLineCycleNext<CR>
+map <leader>h :BufferLineCyclePrev<CR>
+nnoremap <Leader>e <C-w>w
