@@ -59,53 +59,25 @@ end
 
 local lspconfig = require('lspconfig')
 
--- coq autocompletion
--- set xdg dir for coqDeps since nix is readonly
-vim.g.coq_settings = {
-  xdg = true,
-  auto_start = 'shut-up',
-  display = {
-    pum = {
-      fast_close = false,
-    },
-  },
-  clients = {
-    snippets = {
-      user_path = "~/.config/nvim/snippets/"
-    },
-  },
-}
-
-local coq = require "coq"
 local servers = {
   gopls = {},
   rnix = {},
   terraformls = {},
   rust_analyzer = {},
-
-  yamlls = {
-    settings = {
-      yaml = {
-        schemas = {
-          kubernetes = "/*.yaml"
-        },
-      },
-    },
-  },
+  yamlls = {},
 }
-for server, config in pairs(servers) do
-  lspconfig[server].setup(coq.lsp_ensure_capabilities(
-    vim.tbl_deep_extend("force", {
-      on_attach = on_attach,
-      capabilities = capabilities,
-      flags = {debounce_text_changes = 150},
-      settings = config.settings,
-    }, {}))
-  )
-  local cfg = lspconfig[server]
-    if not (cfg and cfg.cmd and vim.fn.executable(cfg.cmd[1]) == 1) then
-      print(server .. ": cmd not found: " .. vim.inspect(cfg.cmd))
-    end
+
+local caps = vim.lsp.protocol.make_client_capabilities()
+local capabilities = require('cmp_nvim_lsp').default_capabilities(caps)
+
+for key, value in pairs(servers) do
+  lspconfig[key].setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    settings = value.settings,
+    cmd = value.cmd,
+    root_dir = value.root_dir,
+  }
 end
 
 require "lsp_signature".setup({
@@ -123,4 +95,3 @@ for type, icon in pairs(signs) do
     local hl = "DiagnosticSign" .. type
   vim.fn.sign_define(hl, { text = icon, texthl= hl, numhl = hl })
 end
-

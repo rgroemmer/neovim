@@ -1,46 +1,6 @@
 -- disable netrw at the very start of your init.lua (strongly advised)
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
-
--- theme 
-require('onedark').setup {
-  style = 'deep',
-  colors = {
-    red = "#e06c75",
-    grey = "#7a7f89",
-  },
-
-  toggle_style_key = "<leader>ts",
-
-  code_style = {
-      comments = 'none',
-      keywords = 'none',
-      functions = 'none',
-      strings = 'none',
-      variables = 'none'
-  },
-
-   -- Plugins Config --
-  diagnostics = {
-    darker = false, -- darker colors for diagnostic
-    undercurl = true,   -- use undercurl instead of underline for diagnostics
-    background = true,    -- use background color for virtual text
-  },
-  highlights = {
-    Whitespace = {fg = "#2B313B"} ,
-    NonText = {fg = "#2B313B"},
-    SpecialKey = {fg = "#2B313B"},
-    --matchParen = {bg = "#FFFFFF"},
-    -- highlight group for Illuminate
-    IlluminatedWordText = {bg = "#373F4D"},
-    IlluminatedWordRead = {bg = "#373F4D"},
-    IlluminatedWordWrite = {bg = "#373F4D"}
-  },
-}
-
-require('onedark').load()
--- set termguicolors to enable highlight groups
-
 vim.opt.termguicolors = true
 
 -- explorer

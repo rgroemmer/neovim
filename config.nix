@@ -1,7 +1,6 @@
 { pkgs }: {
   extraPackages = with pkgs; [
     gopls
-    gotools
     golangci-lint-langserver
     rnix-lsp
     terraform-ls
