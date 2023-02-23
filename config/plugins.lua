@@ -44,7 +44,6 @@ vim.opt.termguicolors = true
 
 -- explorer
 require('nvim-tree').setup({
-  -- open_on_setup_file = true,
   view = {
     mappings = {
       list = {
