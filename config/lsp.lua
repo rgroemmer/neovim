@@ -36,6 +36,11 @@ local lspconfig = require('lspconfig')
 vim.g.coq_settings = {
   xdg = true,
   auto_start = 'shut-up',
+  display = {
+    pum = {
+      fast_close = false,
+    },
+  },
   clients = {
     snippets = {
       user_path = "~/.config/nvim/snippets/"
