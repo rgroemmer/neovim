@@ -40,11 +40,12 @@ require('onedark').setup {
 
 require('onedark').load()
 -- set termguicolors to enable highlight groups
+
 vim.opt.termguicolors = true
 
 -- explorer
 require('nvim-tree').setup({
-  -- open_on_setup_file = true,
+  open_on_setup_file = true,
   view = {
     mappings = {
       list = {
@@ -118,11 +119,26 @@ wk.register({
 )
 
 wk.register({
+  s = {
+    name = "substitute", -- optional group name
+    v = { "visual confirm" },
+    w = { "all words under cursor" },
+    a = { "visual all" },
+  }}, { prefix = "<leader>" }
+)
+
+wk.register({
   g = {
     d = { "goto definition" },
     D = { "goto declaration" },
     r = { "goto references" },
     t = { "goto type definition" },
+  }}
+)
+
+wk.register({
+  c = {
+    a = { "show code actions" },
   }}
 )
 

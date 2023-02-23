@@ -4,7 +4,7 @@
     gotools
     golangci-lint-langserver
     rnix-lsp
-    terraform-lsp
+    terraform-ls
     rust-analyzer
     nodePackages.yaml-language-server
     nodejs
@@ -17,17 +17,29 @@
     bat
     ripgrep
   ];
-
   startPlugins = with pkgs.vimPlugins; [
-    onedark-nvim
+    edge # theme
+
     nvim-tree-lua      # explorer
     nvim-lspconfig      # lsp-config
 
     nvim-treesitter.withAllGrammars
 
-    coq_nvim
-    coq-artifacts
-    coq-thirdparty
+    nvim-cmp
+    cmp-nvim-lsp
+    cmp-path
+    cmp-buffer
+    cmp-cmdline
+    cmp-git
+
+    cmp-nvim-ultisnips
+    ultisnips
+
+    vim-snippets
+    cmp-vsnip
+    vim-vsnip
+    friendly-snippets
+
     lsp_signature-nvim
 
     which-key-nvim
