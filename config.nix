@@ -1,6 +1,7 @@
 { pkgs }: {
   extraPackages = with pkgs; [
     gopls
+    gotools
     golangci-lint-langserver
     rnix-lsp
     terraform-ls
@@ -18,28 +19,15 @@
   ];
 
   startPlugins = with pkgs.vimPlugins; [
-    edge # theme
-
+    onedark-nvim
     nvim-tree-lua      # explorer
     nvim-lspconfig      # lsp-config
 
     nvim-treesitter.withAllGrammars
 
-    nvim-cmp
-    cmp-nvim-lsp
-    cmp-path
-    cmp-buffer
-    cmp-cmdline
-    cmp-git
-
-    cmp-nvim-ultisnips
-    ultisnips
-
-    vim-snippets
-    cmp-vsnip
-    vim-vsnip
-    friendly-snippets
-
+    coq_nvim
+    coq-artifacts
+    coq-thirdparty
     lsp_signature-nvim
 
     which-key-nvim
