@@ -96,8 +96,10 @@ require('bufferline').setup({
 })
 
 -- autoclose brackets
-require('nvim-autopairs').setup({
-  disable_filetype = { "TelescopePrompt" , "vim" }
+npairs.setup({
+  disable_filetype = { "TelescopePrompt" , "vim" },
+  map_bs = false,
+  map_cr = false,
 })
 
 require("which-key").setup {
