@@ -31,60 +31,33 @@ end
 
 local lspconfig = require('lspconfig')
 
--- coq autocompletion
--- set xdg dir for coqDeps since nix is readonly
-vim.g.coq_settings = {
-  xdg = true,
-  auto_start = 'shut-up',
-  display = {
-    pum = {
-      fast_close = false,
-    },
+local cmp = require('cmp')
+
+cmp.setup({
+  snippet = {
+    expand = function(args)
+      vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+    end,
   },
-  clients = {
-    snippets = {
-      user_path = "~/.config/nvim/snippets/"
-    },
+  window = {
+    -- completion = cmp.config.window.bordered(),
+    -- documentation = cmp.config.window.bordered(),
   },
-  keymap = {
-    recommended = false,
-  },
-}
-
-local coq = require "coq"
-local remap = vim.api.nvim_set_keymap
-local npairs = require('nvim-autopairs')
-
--- these mappings are coq recommended mappings unrelated to nvim-autopairs
-remap('i', '<esc>', [[pumvisible() ? "<c-e><esc>" : "<esc>"]], { expr = true, noremap = true })
-remap('i', '<c-c>', [[pumvisible() ? "<c-e><c-c>" : "<c-c>"]], { expr = true, noremap = true })
-remap('i', '<tab>', [[pumvisible() ? "<c-n>" : "<tab>"]], { expr = true, noremap = true })
-remap('i', '<s-tab>', [[pumvisible() ? "<c-p>" : "<bs>"]], { expr = true, noremap = true })
-
--- skip it, if you use another global object
-_G.MUtils= {}
-
-MUtils.CR = function()
-  if vim.fn.pumvisible() ~= 0 then
-    if vim.fn.complete_info({ 'selected' }).selected ~= -1 then
-      return npairs.esc('<c-y>')
-    else
-      return npairs.esc('<c-e>') .. npairs.autopairs_cr()
-    end
-  else
-    return npairs.autopairs_cr()
-  end
-end
-remap('i', '<cr>', 'v:lua.MUtils.CR()', { expr = true, noremap = true })
-
-MUtils.BS = function()
-  if vim.fn.pumvisible() ~= 0 and vim.fn.complete_info({ 'mode' }).mode == 'eval' then
-    return npairs.esc('<c-e>') .. npairs.autopairs_bs()
-  else
-    return npairs.autopairs_bs()
-  end
-end
-remap('i', '<bs>', 'v:lua.MUtils.BS()', { expr = true, noremap = true })
+  mapping = cmp.mapping.preset.insert({
+    ['<Tab>'] = cmp.mapping.select_next_item(),
+    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<C-e>'] = cmp.mapping.abort(),
+    ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+  }),
+  sources = cmp.config.sources({
+    { name = 'nvim_lsp' },
+    { name = 'ultisnips' },
+    { name = 'vsnip' },
+    { name = 'buffer' },
+  })
+})
 
 local servers = {
   gopls = {},
@@ -101,19 +74,16 @@ local servers = {
     },
   },
 }
-for server, config in pairs(servers) do
-  lspconfig[server].setup(coq.lsp_ensure_capabilities(
-    vim.tbl_deep_extend("force", {
-      on_attach = on_attach,
-      capabilities = capabilities,
-      flags = {debounce_text_changes = 150},
-      settings = config.settings,
-    }, {}))
-  )
-  local cfg = lspconfig[server]
-    if not (cfg and cfg.cmd and vim.fn.executable(cfg.cmd[1]) == 1) then
-      print(server .. ": cmd not found: " .. vim.inspect(cfg.cmd))
-    end
+local caps = vim.lsp.protocol.make_client_capabilities()
+local capabilities = require('cmp_nvim_lsp').default_capabilities(caps)
+
+for key, value in pairs(servers) do
+  lspconfig[key].setup {
+    capabilities = capabilities,
+    settings = value.settings,
+    cmd = value.cmd,
+    root_dir = value.root_dir,
+  }
 end
 
 require "lsp_signature".setup({

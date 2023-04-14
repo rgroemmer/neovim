@@ -96,11 +96,12 @@ require('bufferline').setup({
 })
 
 -- autoclose brackets
-npairs.setup({
-  disable_filetype = { "TelescopePrompt" , "vim" },
-  map_bs = false,
-  map_cr = false,
-})
+--local npairs = require('nvim-autopairs')
+--npairs.setup({
+--  disable_filetype = { "TelescopePrompt" , "vim" },
+--  map_bs = false,
+--  map_cr = false,
+--})
 
 require("which-key").setup {
   triggers_blacklist = {
