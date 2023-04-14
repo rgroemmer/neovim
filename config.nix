@@ -25,9 +25,21 @@
 
     nvim-treesitter.withAllGrammars
 
-    coq_nvim
-    coq-artifacts
-    coq-thirdparty
+    nvim-cmp
+    cmp-nvim-lsp
+    cmp-path
+    cmp-buffer
+    cmp-cmdline
+    cmp-git
+
+    cmp-nvim-ultisnips
+    ultisnips
+
+    vim-snippets
+    cmp-vsnip
+    vim-vsnip
+    friendly-snippets
+
     lsp_signature-nvim
 
     which-key-nvim
