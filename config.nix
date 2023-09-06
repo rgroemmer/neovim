@@ -1,5 +1,6 @@
 { pkgs }: {
   extraPackages = with pkgs; [
+    # lsp tools 
     gopls
     gotools
     golangci-lint-langserver
@@ -8,49 +9,44 @@
     rust-analyzer
     nodePackages.yaml-language-server
     nodejs
-
+    # plugin pkgs
     tree-sitter
     python39
     sqlite
-
     fzf
     bat
     ripgrep
   ];
 
   startPlugins = with pkgs.vimPlugins; [
-    onedark-nvim
-    nvim-tree-lua      # explorer
-    nvim-lspconfig      # lsp-config
-
-    nvim-treesitter.withAllGrammars
-
+    onedark-vim
+    # lsp-plugins
+    nvim-lspconfig
+    lsp_signature-nvim
+    # intelli-sense
     nvim-cmp
     cmp-nvim-lsp
     cmp-path
     cmp-buffer
     cmp-cmdline
     cmp-git
-
+    # snippet manager
     cmp-nvim-ultisnips
     ultisnips
-
     vim-snippets
     cmp-vsnip
     vim-vsnip
     friendly-snippets
-
-    lsp_signature-nvim
-
+    # default plugins
+    nvim-tree-lua
+    nvim-treesitter.withAllGrammars
     which-key-nvim
     nvim-autopairs
     bufferline-nvim
     lualine-nvim
     indent-blankline-nvim
-
     plenary-nvim
     telescope-nvim
-
     nvim-ts-rainbow 
     vim-illuminate
   ];
@@ -64,6 +60,7 @@
     ''
       lua << EOF
         ${fileContents config/lsp.lua}
+        ${fileContents config/cmp.lua}
         ${fileContents config/plugins.lua}
       EOF
     ''

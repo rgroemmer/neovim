@@ -14,13 +14,14 @@ filetype plugin indent on
 
 let mapleader = " "
 inoremap jk <Esc>
+vnoremap jk <Esc>
 " disable esc to learn above
 imap <Esc> <NOP>
 
 " Security
 set modelines=0
 
-" Show line numbers
+" Show line numbers 
 set number
 
 " Show file stats
@@ -31,6 +32,7 @@ set visualbell
 
 " Encoding
 set encoding=utf-8
+scriptencoding utf-8
 
 set timeoutlen=500
 
@@ -92,14 +94,8 @@ vnoremap <F1> :set invfullscreen<CR>
 " Formatting
 map <leader>q gqip
 
-" Visualize tabs and newlines
-"set listchars=tab:→\ ,eol:¬,trail:·,extends:❯,precedes:❮,space:␣
-" Uncomment this to enable by default:
-"set list " To enable by default
-" Or use your leader key + l to toggle on/off
-map <leader>l :set list!<CR> " Toggle tabs and EOL
-
 " Color scheme (terminal)
+colorscheme onedark
 set t_Co=256
 set background=dark
 
@@ -124,3 +120,4 @@ map <leader>l :BufferLineCycleNext<CR>
 map <leader>h :BufferLineCyclePrev<CR>
 nnoremap <Leader>e <C-w>w
 
+map <leader>y :! go mod tidy <CR>:LspRestart<CR><CR>

@@ -1,7 +1,7 @@
--- lsp config
--- lspconfig
--- updates while typing
-
+local lspconfig = require('lspconfig')
+local caps = vim.lsp.protocol.make_client_capabilities()
+local capabilities = require('cmp_nvim_lsp').default_capabilities(caps)
+local util = require "lspconfig/util"
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
@@ -29,59 +29,35 @@ local on_attach = function(client, bufnr)
     vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
 end
 
-local lspconfig = require('lspconfig')
-
-local cmp = require('cmp')
-
-cmp.setup({
-  snippet = {
-    expand = function(args)
-      vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
-    end,
-  },
-  window = {
-    -- completion = cmp.config.window.bordered(),
-    -- documentation = cmp.config.window.bordered(),
-  },
-  mapping = cmp.mapping.preset.insert({
-    ['<Tab>'] = cmp.mapping.select_next_item(),
-    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-f>'] = cmp.mapping.scroll_docs(4),
-    ['<C-Space>'] = cmp.mapping.complete(),
-    ['<C-e>'] = cmp.mapping.abort(),
-    ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-  }),
-  sources = cmp.config.sources({
-    { name = 'nvim_lsp' },
-    { name = 'ultisnips' },
-    { name = 'vsnip' },
-    { name = 'buffer' },
-  })
-})
-
 local servers = {
-  gopls = {},
-  rnix = {},
-  terraformls = {},
-  rust_analyzer = {},
-  yamlls = {
+  gopls = {
+    cmd = {"gopls"},
+    filetypes = { "go", "gomod", "gowork", "gotmpl" },
+    root_dir = util.root_pattern("go.work", "go.mod", ".git"),
     settings = {
-      yaml = {
-        schemas = {
-          kubernetes = "/*.yaml"
+      gopls = {
+        gofumpt = true,
+        completeUnimported = true,
+        usePlaceholders = true,
+        analyses = {
+          unusedparams = true,
         },
       },
     },
   },
+  rnix = {},
+  terraformls = {},
+  rust_analyzer = {},
+  yamlls = {},
 }
-local caps = vim.lsp.protocol.make_client_capabilities()
-local capabilities = require('cmp_nvim_lsp').default_capabilities(caps)
 
 for key, value in pairs(servers) do
   lspconfig[key].setup {
+    on_attach = on_attach,
     capabilities = capabilities,
-    settings = value.settings,
     cmd = value.cmd,
+    filetypes = value.filetypes,
+    settings = value.settings,
     root_dir = value.root_dir,
   }
 end
@@ -96,9 +72,8 @@ require "lsp_signature".setup({
 -- this is for diagnositcs signs on the line number column
 -- use this to beautify the plain E W signs to more fun ones
 -- !important nerdfonts needs to be setup for this to work in your terminal
-local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " } 
+local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " } 
 for type, icon in pairs(signs) do
     local hl = "DiagnosticSign" .. type
   vim.fn.sign_define(hl, { text = icon, texthl= hl, numhl = hl })
 end
-
