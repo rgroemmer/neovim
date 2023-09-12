@@ -84,4 +84,4 @@ map <leader>l :BufferLineCycleNext<CR>
 map <leader>h :BufferLineCyclePrev<CR>
 nnoremap <Leader>e <C-w>w
 
-map <leader>y :! go mod tidy <CR>:LspRestart<CR><CR>
+map <leader>gt :! go mod tidy <CR>:LspRestart<CR><CR>
