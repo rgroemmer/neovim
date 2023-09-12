@@ -62,6 +62,7 @@
         ${fileContents config/lsp.lua}
         ${fileContents config/cmp.lua}
         ${fileContents config/plugins.lua}
+        ${fileContents config/which-key.lua}
       EOF
     ''
   ];
