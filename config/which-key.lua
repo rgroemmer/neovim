@@ -7,8 +7,11 @@ require("which-key").setup {
     width = { min = 20, max = 50 },
   },
   window = {
-    margin = { 1, 0, 1, 0 }, -- extra window margin [top, right, bottom, left]. When between 0 and 1, will be treated as a percentage of the screen size.
+    border = "single", -- none, single, double, shadow
+    position = "bottom", -- bottom, top
+    margin = { 1, 0, 1, 0 }, -- extra window margin [top, right, bottom, left]
     padding = { 2, 2, 2, 2 }, -- extra window padding [top, right, bottom, left]
+    winblend = 0,
   },
   key_labels = {
     -- override the label used to display some keys. It doesn't effect WK in any other way.
@@ -24,23 +27,31 @@ require("which-key").setup {
 }
 local wk = require('which-key')
 
+-- keymap documentation
+-- leader keymap
 wk.register({
   f = {
-    name = "find", -- optional group name
+    name = "find",
     f = { "find files" },
     g = { "ripgrep" },
     a = { "format file" },
-  }}, { prefix = "<leader>" }
-)
+  },
 
-wk.register({
   g = {
-    name = "go tooling", -- optional group name
+    name = "go tooling",
     t = { "go mod tidy" },
     a = { "format file" },
-  }}, { prefix = "<leader>" }
+  },
+
+  t = "pick buffer",
+  h = "prev buffer",
+  l = "next buffer",
+  ['<space>'] = "which_key_ignore",
+
+  }, { prefix = "<leader>" }
 )
 
+-- code keymap
 wk.register({
   g = {
     name = "code ancestors",
