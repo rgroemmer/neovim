@@ -6,7 +6,6 @@
     golangci-lint-langserver
     rnix-lsp
     terraform-ls
-    rust-analyzer
     nodePackages.yaml-language-server
     nodejs
     # plugin pkgs
@@ -44,10 +43,8 @@
     nvim-autopairs
     bufferline-nvim
     lualine-nvim
-    indent-blankline-nvim
     plenary-nvim
     telescope-nvim
-    nvim-ts-rainbow 
     vim-illuminate
   ];
 

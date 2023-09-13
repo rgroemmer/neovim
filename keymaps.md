@@ -1,5 +1,9 @@
 # Keymap
 
+Tree:
+    crtl-h / crtl-v = open-split
+    tab = open withput close
+
 ## default
 
 | key    | action |

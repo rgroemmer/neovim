@@ -1,5 +1,11 @@
 -- explorer
-require('nvim-tree').setup()
+require('nvim-tree').setup({
+  actions = {
+    open_file = {
+        quit_on_open = true,
+    },
+  },
+})
 
 -- tab manager
 require('bufferline').setup({
@@ -21,17 +27,9 @@ require('bufferline').setup({
 })
 
 -- autoclose brackets
---local npairs = require('nvim-autopairs')
---npairs.setup({
---  disable_filetype = { "TelescopePrompt" , "vim" },
---  map_bs = false,
---  map_cr = false,
---})
-
+require('nvim-autopairs').setup({})
 
 -- statusbar
-
-
 require('lualine').setup({
   options = {
     theme = 'onedark',
@@ -40,19 +38,4 @@ require('lualine').setup({
     section_separators = '',
   },
 })
-
-require("indent_blankline").setup {
-  space_char_blankline = " ",
-  char_highlight_list = {
-    "IndentBlanklineIndent1",
-    "IndentBlanklineIndent2",
-    "IndentBlanklineIndent3",
-    "IndentBlanklineIndent4",
-    "IndentBlanklineIndent5",
-    "IndentBlanklineIndent6",
-  },
-}
-
-local async = require "plenary.async"
-
 
