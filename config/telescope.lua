@@ -13,4 +13,4 @@ vim.keymap.set('n', '<leader>e', '<CMD>NvimTreeToggle<CR>')
 vim.keymap.set('n', '<leader>l', '<CMD>NvimTreeCycleNext<CR>')
 vim.keymap.set('n', '<leader>h', '<CMD>NvimTreeCyclePrev<CR>')
 
-vim.keymap.set('n', '<leader>h', '<CMD>! go mod tidy <CR>:LspRestart<CR><CR>')
+vim.keymap.set('n', '<leader>gt', '<CMD>! go mod tidy <CR>:LspRestart<CR>')
