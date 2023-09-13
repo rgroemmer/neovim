@@ -1,4 +1,4 @@
-" default configuration //
+" default configuration
 let mapleader = " "
 syntax on
 inoremap jk <Esc>
@@ -27,8 +27,6 @@ set noshiftround
 set scrolloff=3
 " Make backspace work like normal
 set backspace=indent,eol,start
-
-
 
 "set matchpairs+=<:> " use % to jump between pairs
 "runtime! macros/matchit.vim
@@ -76,12 +74,3 @@ augroup highlight_yank
     autocmd!
     au TextYankPost * silent! lua vim.highlight.on_yank { higroup='IncSearch', timeout=200 }
 augroup END
-
-" plugin mappings
-map <leader>ee :NvimTreeToggle<CR>
-map <leader>t :BufferLinePick<CR>
-map <leader>l :BufferLineCycleNext<CR>
-map <leader>h :BufferLineCyclePrev<CR>
-nnoremap <Leader>e <C-w>w
-
-map <leader>gt :! go mod tidy <CR>:LspRestart<CR><CR>

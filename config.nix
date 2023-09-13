@@ -59,6 +59,9 @@
     (fileContents config/config.vim)
     ''
       lua << EOF
+        ${fileContents config/init.lua}
+        ${fileContents config/treesitter.lua}
+        ${fileContents config/telescope.lua}
         ${fileContents config/lsp.lua}
         ${fileContents config/cmp.lua}
         ${fileContents config/plugins.lua}
