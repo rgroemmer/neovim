@@ -23,3 +23,5 @@ vim.keymap.set('n', '<leader>gt', '<CMD>! go mod tidy <CR>:LspRestart<CR>')
 
 -- Lazygit
 vim.keymap.set('n', '<leader>gg', ':LazyGit<CR>')
+
+vim.keymap.set('n', '<leader>gz', ':below 15sp term://zsh<CR>i')
