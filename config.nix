@@ -6,7 +6,6 @@
     golangci-lint-langserver
     rnix-lsp
     terraform-ls
-    rust-analyzer
     nodePackages.yaml-language-server
     nodejs
     # plugin pkgs
@@ -39,16 +38,16 @@
     friendly-snippets
     # default plugins
     nvim-tree-lua
+    nvim-web-devicons
     nvim-treesitter.withAllGrammars
     which-key-nvim
     nvim-autopairs
     bufferline-nvim
     lualine-nvim
-    indent-blankline-nvim
     plenary-nvim
     telescope-nvim
-    nvim-ts-rainbow 
     vim-illuminate
+    lazygit-nvim
   ];
 
   optPlugins = with pkgs; [
@@ -56,12 +55,17 @@
 
   # build neovim config
   neovimConfig = with pkgs.lib.strings; builtins.concatStringsSep "\n" [
-    (fileContents config/config.vim)
+    (fileContents config/vim/config.vim)
+    (fileContents config/vim/better_escape.vim)
     ''
       lua << EOF
-        ${fileContents config/lsp.lua}
-        ${fileContents config/cmp.lua}
-        ${fileContents config/plugins.lua}
+        ${fileContents config/init.lua}
+        ${fileContents config/core/lsp.lua}
+        ${fileContents config/core/treesitter.lua}
+        ${fileContents config/core/cmp.lua}
+        ${fileContents config/core/keymap.lua}
+        ${fileContents config/plugins/plugins.lua}
+        ${fileContents config/core/which-key.lua}
       EOF
     ''
   ];
