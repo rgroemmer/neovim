@@ -47,6 +47,7 @@
     plenary-nvim
     telescope-nvim
     vim-illuminate
+    lazygit-nvim
   ];
 
   optPlugins = with pkgs; [

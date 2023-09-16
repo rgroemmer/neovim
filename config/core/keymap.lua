@@ -20,3 +20,6 @@ vim.keymap.set('n', '<leader>w', ':w<CR>')
 
 -- Go
 vim.keymap.set('n', '<leader>gt', '<CMD>! go mod tidy <CR>:LspRestart<CR>')
+
+-- Lazygit
+vim.keymap.set('n', '<leader>gg', ':LazyGit<CR>')

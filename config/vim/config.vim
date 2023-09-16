@@ -38,6 +38,8 @@ map <leader><space> :let @/=''<cr> " clear search
 set undofile
 
 " Other
+autocmd BufEnter * :lua require('lazygit.utils').project_root_dir()
+
 au BufRead,BufNewFile *.nix set filetype=nix "filetypes
 
 augroup highlight_yank

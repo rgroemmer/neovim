@@ -39,3 +39,4 @@ require('lualine').setup({
   },
 })
 
+require('telescope').load_extension('lazygit')
