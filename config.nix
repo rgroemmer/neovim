@@ -38,6 +38,7 @@
     friendly-snippets
     # default plugins
     nvim-tree-lua
+    nvim-web-devicons
     nvim-treesitter.withAllGrammars
     which-key-nvim
     nvim-autopairs
@@ -53,16 +54,17 @@
 
   # build neovim config
   neovimConfig = with pkgs.lib.strings; builtins.concatStringsSep "\n" [
-    (fileContents config/config.vim)
+    (fileContents config/vim/config.vim)
+    (fileContents config/vim/better_escape.vim)
     ''
       lua << EOF
         ${fileContents config/init.lua}
-        ${fileContents config/treesitter.lua}
-        ${fileContents config/telescope.lua}
-        ${fileContents config/lsp.lua}
-        ${fileContents config/cmp.lua}
-        ${fileContents config/plugins.lua}
-        ${fileContents config/which-key.lua}
+        ${fileContents config/core/lsp.lua}
+        ${fileContents config/core/treesitter.lua}
+        ${fileContents config/core/cmp.lua}
+        ${fileContents config/core/telescope.lua}
+        ${fileContents config/plugins/plugins.lua}
+        ${fileContents config/core/which-key.lua}
       EOF
     ''
   ];

@@ -1,8 +1,6 @@
 " default configuration
 let mapleader = " "
 syntax on
-inoremap jk <Esc>
-vnoremap jk <Esc>
 set number
 " Show file stats
 set ruler
@@ -74,3 +72,4 @@ augroup highlight_yank
     autocmd!
     au TextYankPost * silent! lua vim.highlight.on_yank { higroup='IncSearch', timeout=200 }
 augroup END
+

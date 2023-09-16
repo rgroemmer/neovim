@@ -1,6 +1,8 @@
--- general config
+-- disable netrw acording to nvim-tree
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
+
+-- system configuration
 vim.cmd 'colorscheme onedark'
 -- set termguicolors to enable highlight groups
 vim.opt.termguicolors = true
