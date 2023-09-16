@@ -62,7 +62,7 @@
         ${fileContents config/core/lsp.lua}
         ${fileContents config/core/treesitter.lua}
         ${fileContents config/core/cmp.lua}
-        ${fileContents config/core/telescope.lua}
+        ${fileContents config/core/keymap.lua}
         ${fileContents config/plugins/plugins.lua}
         ${fileContents config/core/which-key.lua}
       EOF
