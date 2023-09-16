@@ -1,3 +1,6 @@
+" Make jk efficient by checking if the last char is j after hitting k.
+" This makes j much more faster because its not going into the timoutlen
+" anymore
 inoremap <expr> k EscapeInsertOrNot()
 
 function! EscapeInsertOrNot() abort
