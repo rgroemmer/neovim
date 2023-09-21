@@ -8,7 +8,6 @@ set visualbell                    " Blink cursor on error instead of beeping (gr
 set encoding=utf-8                " Encoding
 scriptencoding utf-8
 set timeoutlen=700
-set textwidth=72
 set wrap
 set signcolumn=yes                " Make space for diagnostic signs
 
