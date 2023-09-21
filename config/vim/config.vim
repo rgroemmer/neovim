@@ -40,6 +40,7 @@ set undofile
 autocmd BufEnter * :lua require('lazygit.utils').project_root_dir()
 
 au BufRead,BufNewFile *.nix set filetype=nix "filetypes
+au BufRead,BufNewFile *.tfvars set filetype=terraform "filetypes
 
 augroup highlight_yank
     autocmd!
