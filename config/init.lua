@@ -9,7 +9,5 @@ vim.cmd 'colorscheme onedark'
 vim.opt.termguicolors = true
 vim.opt.showmode = false
 vim.opt.termguicolors = true
-vim.opt.list = true
-vim.opt.listchars:append "trail:λ"
 
 local async = require "plenary.async"

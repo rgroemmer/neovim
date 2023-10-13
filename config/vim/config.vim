@@ -10,6 +10,10 @@ scriptencoding utf-8
 set timeoutlen=700
 set wrap
 set signcolumn=yes                " Make space for diagnostic signs
+set list
+set listchars=trail:λ
+" disable show tabs
+set listchars+=tab:\ \ 
 
 " Format
 set formatoptions=tcqrn1
@@ -33,7 +37,7 @@ set incsearch
 set ignorecase
 set smartcase
 set showmatch
-map <leader><space> :let @/=''<cr> " clear search
+map <leader>c :let @/=''<cr> " clear search
 set undofile
 
 " Other

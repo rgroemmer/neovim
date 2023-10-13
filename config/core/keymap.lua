@@ -10,7 +10,7 @@ vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 
 -- Explorer
 vim.keymap.set('n', '<leader>t', '<CMD>BufferLinePick<CR>')
-vim.keymap.set('n', '<leader>e', '<CMD>NvimTreeToggle<CR>')
+vim.keymap.set('n', '<leader><space>', '<CMD>NvimTreeToggle<CR>')
 vim.keymap.set('n', '<leader>l', '<CMD>NvimTreeCycleNext<CR>')
 vim.keymap.set('n', '<leader>h', '<CMD>NvimTreeCyclePrev<CR>')
 
