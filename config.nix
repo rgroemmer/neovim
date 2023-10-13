@@ -1,13 +1,18 @@
 { pkgs }: {
   extraPackages = with pkgs; [
-    # lsp tools 
+    # language server
     gopls
-    gotools
     golangci-lint-langserver
     rnix-lsp
     terraform-ls
+    lua-language-server
     nodePackages.yaml-language-server
+    nodePackages.bash-language-server
+    helm-ls
+    ansible-language-server
+    # tooling
     nodejs
+    gotools
     # plugin pkgs
     tree-sitter
     python39
