@@ -51,43 +51,7 @@ require('lualine').setup({
   },
 })
 
-require('telescope').load_extension('lazygit')
-
-local wilder = require('wilder')
-wilder.setup({modes = {':', '/', '?'}})
-wilder.set_option('renderer', wilder.popupmenu_renderer(
-  wilder.popupmenu_border_theme({
-    highlights = {
-      border = 'Normal', -- highlight to use for the border
-    },
-    -- 'single', 'double', 'rounded' or 'solid'
-    -- can also be a list of 8 characters, see :h wilder#popupmenu_border_theme() for more details
-    border = 'rounded',
-  })
-))
-
-local cfg = require("yaml-companion").setup({
-  schemas = {
-    {
-      name = "HelmRelease",
-      uri = "https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/main/helmrelease-helm-v2beta1.json",
-    },
-    {
-      name = "HelmRepository",
-      uri = "https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/main/helmrepository-source-v1beta2.json",
-    },
-    {
-      name = "GitRepository",
-      uri = "https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/main/gitrepository-source-v1beta2.json",
-    },
-    {
-      name = "FluxKustomization",
-      uri = "https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/main/kustomization-kustomize-v1beta2.json",
-    },
-  },
-})
-require("lspconfig")["yamlls"].setup(cfg)
-
+-- indent-blankline
 local highlight = {
     "CursorColumn",
     "Whitespace",
@@ -100,3 +64,20 @@ require("ibl").setup {
     },
     scope = { enabled = false },
 }
+
+-- lazygit
+require('telescope').load_extension('lazygit')
+
+-- cmd autocompletion
+local wilder = require('wilder')
+wilder.setup({modes = {':', '/', '?'}})
+wilder.set_option('renderer', wilder.popupmenu_renderer(
+  wilder.popupmenu_border_theme({
+    highlights = {
+      border = 'Normal', -- highlight to use for the border
+    },
+    -- 'single', 'double', 'rounded' or 'solid'
+    -- can also be a list of 8 characters, see :h wilder#popupmenu_border_theme() for more details
+    border = 'rounded',
+  })
+))
