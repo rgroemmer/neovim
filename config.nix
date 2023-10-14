@@ -24,7 +24,7 @@
 
   startPlugins = with pkgs.vimPlugins; [
     # colorscheme
-    onedark-vim
+    onedark-nvim
 
     # lsp-plugins
     nvim-lspconfig
@@ -44,6 +44,7 @@
     lazygit-nvim
     wilder-nvim
     indent-blankline-nvim
+    vim-better-whitespace
 
     # intelli-sense
     nvim-cmp
