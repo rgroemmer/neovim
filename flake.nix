@@ -28,7 +28,7 @@
         config = import ./config.nix { inherit pkgs plugin; };
 
         # installs a vim plugin from git
-        plugin = with pkgs; repo: vimUtils.buildVimPluginFrom2Nix {
+        plugin = with pkgs; repo: vimUtils.buildVimPlugin {
           pname = "${lib.strings.sanitizeDerivationName repo}";
           version = "main";
           src = builtins.getAttr repo inputs;

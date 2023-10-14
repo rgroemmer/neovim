@@ -48,16 +48,7 @@ local servers = {
   rnix = {},
   terraformls = {},
   rust_analyzer = {},
-  yamlls = {
-    settings = {
-      yaml = {
-        schemas = {
-          kubernetes = "*.yaml",
-          ["https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.28.2-standalone/all.json"] = "*.yaml",
-        },
-      },
-    },
-  },
+  yamlls = {},
 }
 
 for key, value in pairs(servers) do
