@@ -1,4 +1,4 @@
-{ pkgs }: {
+{ pkgs, plugin }: {
   extraPackages = with pkgs; [
     # language server
     gopls
@@ -23,24 +23,13 @@
   ];
 
   startPlugins = with pkgs.vimPlugins; [
+    # colorscheme
     onedark-vim
+
     # lsp-plugins
     nvim-lspconfig
     lsp_signature-nvim
-    # intelli-sense
-    nvim-cmp
-    cmp-nvim-lsp
-    cmp-path
-    cmp-buffer
-    cmp-cmdline
-    cmp-git
-    # snippet manager
-    cmp-nvim-ultisnips
-    ultisnips
-    vim-snippets
-    cmp-vsnip
-    vim-vsnip
-    friendly-snippets
+
     # default plugins
     nvim-tree-lua
     nvim-web-devicons
@@ -53,6 +42,26 @@
     telescope-nvim
     vim-illuminate
     lazygit-nvim
+    wilder-nvim
+    indent-blankline-nvim
+
+    # intelli-sense
+    nvim-cmp
+    cmp-nvim-lsp
+    cmp-path
+    cmp-buffer
+    cmp-cmdline
+    cmp-git
+
+    # snippet manager
+    vim-snippets
+    cmp-vsnip
+    vim-vsnip
+    friendly-snippets
+
+    # plugins via git
+    (plugin "yaml-companion")
+    nvim-navic
   ];
 
   optPlugins = with pkgs; [
@@ -68,8 +77,10 @@
         ${fileContents config/core/lsp.lua}
         ${fileContents config/core/treesitter.lua}
         ${fileContents config/core/cmp.lua}
+        ${fileContents config/core/diagnostics.lua}
         ${fileContents config/core/keymap.lua}
-        ${fileContents config/plugins/plugins.lua}
+        ${fileContents config/plugins/default.lua}
+        ${fileContents config/plugins/additional.lua}
         ${fileContents config/core/which-key.lua}
       EOF
     ''

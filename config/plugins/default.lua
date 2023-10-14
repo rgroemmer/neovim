@@ -51,4 +51,33 @@ require('lualine').setup({
   },
 })
 
+-- indent-blankline
+local highlight = {
+    "CursorColumn",
+    "Whitespace",
+}
+require("ibl").setup {
+    indent = { highlight = highlight, char = "" },
+    whitespace = {
+        highlight = highlight,
+        remove_blankline_trail = false,
+    },
+    scope = { enabled = false },
+}
+
+-- lazygit
 require('telescope').load_extension('lazygit')
+
+-- cmd autocompletion
+local wilder = require('wilder')
+wilder.setup({modes = {':', '/', '?'}})
+wilder.set_option('renderer', wilder.popupmenu_renderer(
+  wilder.popupmenu_border_theme({
+    highlights = {
+      border = 'Normal', -- highlight to use for the border
+    },
+    -- 'single', 'double', 'rounded' or 'solid'
+    -- can also be a list of 8 characters, see :h wilder#popupmenu_border_theme() for more details
+    border = 'rounded',
+  })
+))

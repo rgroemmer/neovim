@@ -2,7 +2,7 @@ local builtin = require('telescope.builtin')
 
 -- Keymappings //
 
--- Seraching
+-- Searching
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
@@ -24,4 +24,5 @@ vim.keymap.set('n', '<leader>gt', '<CMD>! go mod tidy <CR>:LspRestart<CR>')
 -- Lazygit
 vim.keymap.set('n', '<leader>gg', ':LazyGit<CR>')
 
-vim.keymap.set('n', '<leader>gz', ':below 15sp term://zsh<CR>i')
+-- Yaml Companion
+vim.keymap.set('n', '<leader>y', '<CMD>Telescope yaml_schema<CR>')

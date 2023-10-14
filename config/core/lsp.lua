@@ -3,10 +3,16 @@ local caps = vim.lsp.protocol.make_client_capabilities()
 local capabilities = require('cmp_nvim_lsp').default_capabilities(caps)
 local util = require "lspconfig/util"
 
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-  vim.lsp.diagnostic.on_publish_diagnostics, {
-  update_in_insert = true,
-})
+-- Navic used to get the actual file path of cursor
+local navic = require("nvim-navic")
+navic.setup{
+  lsp = {
+    auto_attach = true;
+  },
+}
+-- Display filepath on top-line
+vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
+
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
@@ -27,6 +33,10 @@ local on_attach = function(client, bufnr)
     vim.keymap.set('n', '<space>ea', vim.diagnostic.open_float, opts)
     vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
     vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
+    -- attach navic if capabilities met
+    if client.server_capabilities.documentSymbolProvider then
+        navic.attach(client, bufnr)
+    end
 end
 
 local servers = {
@@ -48,25 +58,7 @@ local servers = {
   rnix = {},
   terraformls = {},
   rust_analyzer = {},
-  yamlls = {
-    settings = {
-      schemas = {
-        kubernetes = "*.yaml",
-          ["http://json.schemastore.org/github-workflow"] = ".github/workflows/*",
-          ["http://json.schemastore.org/github-action"] = ".github/action.{yml,yaml}",
-          ["http://json.schemastore.org/ansible-stable-2.9"] = "roles/tasks/*.{yml,yaml}",
-          ["http://json.schemastore.org/prettierrc"] = ".prettierrc.{yml,yaml}",
-          ["http://json.schemastore.org/kustomization"] = "kustomization.{yml,yaml}",
-          ["http://json.schemastore.org/ansible-playbook"] = "*play*.{yml,yaml}",
-          ["http://json.schemastore.org/chart"] = "Chart.{yml,yaml}",
-          ["https://json.schemastore.org/dependabot-v2"] = ".github/dependabot.{yml,yaml}",
-          ["https://json.schemastore.org/gitlab-ci"] = "*gitlab-ci*.{yml,yaml}",
-          ["https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/schemas/v3.1/schema.json"] = "*api*.{yml,yaml}",
-          ["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] = "*docker-compose*.{yml,yaml}",
-          ["https://raw.githubusercontent.com/argoproj/argo-workflows/master/api/jsonschema/schema.json"] = "*flow*.{yml,yaml}",
-        },
-    },
-  },
+  yamlls = {},
 }
 
 for key, value in pairs(servers) do
@@ -80,18 +72,3 @@ for key, value in pairs(servers) do
   }
 end
 
-require "lsp_signature".setup({
-  bind = true, -- This is mandatory, otherwise border config won't get registered.
-  handler_opts = {
-    border = "rounded"
-  }
-})
-
--- this is for diagnositcs signs on the line number column
--- use this to beautify the plain E W signs to more fun ones
--- !important nerdfonts needs to be setup for this to work in your terminal
-local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " } 
-for type, icon in pairs(signs) do
-    local hl = "DiagnosticSign" .. type
-  vim.fn.sign_define(hl, { text = icon, texthl= hl, numhl = hl })
-end
