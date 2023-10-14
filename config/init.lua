@@ -11,3 +11,12 @@ vim.opt.showmode = false
 vim.opt.termguicolors = true
 
 local async = require "plenary.async"
+
+-- Lua
+require('onedark').setup {
+  style = 'cool',
+  highlights = {
+    ["@variable"] = {fg = '$red'}
+  }
+}
+require('onedark').load()
