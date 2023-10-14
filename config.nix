@@ -53,6 +53,8 @@
     telescope-nvim
     vim-illuminate
     lazygit-nvim
+    wilder-nvim
+    indent-blankline-nvim
   ];
 
   optPlugins = with pkgs; [
