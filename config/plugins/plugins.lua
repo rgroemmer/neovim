@@ -54,7 +54,7 @@ require('lualine').setup({
 require('telescope').load_extension('lazygit')
 
 local wilder = require('wilder')
-wilder.setup({modes = {':', '/\\v', '?'}})
+wilder.setup({modes = {':', '/', '?'}})
 wilder.set_option('renderer', wilder.popupmenu_renderer(
   wilder.popupmenu_border_theme({
     highlights = {
@@ -65,8 +65,6 @@ wilder.set_option('renderer', wilder.popupmenu_renderer(
     border = 'rounded',
   })
 ))
-
-require("ibl").setup()
 
 local cfg = require("yaml-companion").setup({
   schemas = {
@@ -89,3 +87,16 @@ local cfg = require("yaml-companion").setup({
   },
 })
 require("lspconfig")["yamlls"].setup(cfg)
+
+local highlight = {
+    "CursorColumn",
+    "Whitespace",
+}
+require("ibl").setup {
+    indent = { highlight = highlight, char = "" },
+    whitespace = {
+        highlight = highlight,
+        remove_blankline_trail = false,
+    },
+    scope = { enabled = false },
+}

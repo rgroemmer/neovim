@@ -2,6 +2,13 @@ local lspconfig = require('lspconfig')
 local caps = vim.lsp.protocol.make_client_capabilities()
 local capabilities = require('cmp_nvim_lsp').default_capabilities(caps)
 local util = require "lspconfig/util"
+local navic = require("nvim-navic")
+navic.setup{
+  lsp = {
+    auto_attach = true;
+  },
+}
+vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
@@ -27,6 +34,9 @@ local on_attach = function(client, bufnr)
     vim.keymap.set('n', '<space>ea', vim.diagnostic.open_float, opts)
     vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
     vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
+    if client.server_capabilities.documentSymbolProvider then
+        navic.attach(client, bufnr)
+    end
 end
 
 local servers = {

@@ -42,6 +42,7 @@
     vim-vsnip
     friendly-snippets
     (plugin "yaml-companion")
+    nvim-navic
     # default plugins
     nvim-tree-lua
     nvim-web-devicons
