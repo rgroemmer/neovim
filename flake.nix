@@ -7,7 +7,7 @@
 
     # all plugins that are not present in nixpkgs.vimPlugins need to be added here
     # they get directly fetched from git and build on the fly
-    "earthly-vim" = { url = "github:earthly/earthly.vim"; flake = false; };
+    "yaml-companion" = { url = "github:someone-stole-my-name/yaml-companion.nvim"; flake = false; };
   };
 
   outputs = { self, nixpkgs, flake-utils, ... }@inputs:
@@ -25,7 +25,7 @@
           config = { allowUnfree = true; };
         };
 
-        config = import ./config.nix { inherit pkgs; };
+        config = import ./config.nix { inherit pkgs plugin; };
 
         # installs a vim plugin from git
         plugin = with pkgs; repo: vimUtils.buildVimPluginFrom2Nix {

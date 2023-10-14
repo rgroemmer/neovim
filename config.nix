@@ -1,4 +1,4 @@
-{ pkgs }: {
+{ pkgs, plugin }: {
   extraPackages = with pkgs; [
     # language server
     gopls
@@ -41,6 +41,7 @@
     cmp-vsnip
     vim-vsnip
     friendly-snippets
+    (plugin "yaml-companion")
     # default plugins
     nvim-tree-lua
     nvim-web-devicons

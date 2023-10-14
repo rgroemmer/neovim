@@ -67,3 +67,10 @@ wilder.set_option('renderer', wilder.popupmenu_renderer(
 ))
 
 require("ibl").setup()
+
+require("yaml-companion").setup({
+  -- Add any options here, or leave empty to use the default settings
+  -- lspconfig = {
+  --   cmd = {"yaml-language-server"}
+  -- },
+})

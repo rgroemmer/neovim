@@ -1,21 +1,5 @@
 {
   "nodes": {
-    "earthly-vim": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1691513846,
-        "narHash": "sha256-ufvJd1WmMwcG9LgVtjdB4ipXwjVZMhKtrQl2+H2aIL4=",
-        "owner": "earthly",
-        "repo": "earthly.vim",
-        "rev": "66bf86d8292d71e6f2f5e8ea371471c9809efde6",
-        "type": "github"
-      },
-      "original": {
-        "owner": "earthly",
-        "repo": "earthly.vim",
-        "type": "github"
-      }
-    },
     "flake-utils": {
       "inputs": {
         "systems": "systems"
@@ -51,9 +35,9 @@
     },
     "root": {
       "inputs": {
-        "earthly-vim": "earthly-vim",
         "flake-utils": "flake-utils",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "yaml-companion": "yaml-companion"
       }
     },
     "systems": {
@@ -68,6 +52,22 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "yaml-companion": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1677877651,
+        "narHash": "sha256-BmX7hyiIMQfcoUl09Y794HrSDq+cj93T+Z5u3e5wqLc=",
+        "owner": "someone-stole-my-name",
+        "repo": "yaml-companion.nvim",
+        "rev": "4de1e1546abc461f62dee02fcac6a02debd6eb9e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "someone-stole-my-name",
+        "repo": "yaml-companion.nvim",
         "type": "github"
       }
     }
