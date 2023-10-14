@@ -14,7 +14,7 @@ local async = require "plenary.async"
 
 -- Lua
 require('onedark').setup {
-    style = 'cool'
+  style = 'cool',
   highlights = {
     ["@variable"] = {fg = '$red'}
   }
