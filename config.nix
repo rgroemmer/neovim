@@ -44,7 +44,6 @@
     lazygit-nvim
     wilder-nvim
     indent-blankline-nvim
-    vim-better-whitespace
 
     # intelli-sense
     nvim-cmp
@@ -70,11 +69,10 @@
 
   # build neovim config
   neovimConfig = with pkgs.lib.strings; builtins.concatStringsSep "\n" [
-    (fileContents config/vim/config.vim)
     (fileContents config/vim/better_escape.vim)
     ''
       lua << EOF
-        ${fileContents config/init.lua}
+        ${fileContents config/core/init.lua}
         ${fileContents config/core/lsp.lua}
         ${fileContents config/core/treesitter.lua}
         ${fileContents config/core/cmp.lua}
