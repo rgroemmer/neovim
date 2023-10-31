@@ -74,12 +74,13 @@
       lua << EOF
         -- Core configuration
         ${fileContents config/core/init.lua}
+        ${fileContents config/core/autocmds.lua}
         ${fileContents config/core/theme.lua}
         ${fileContents config/core/lsp.lua}
         ${fileContents config/core/treesitter.lua}
         ${fileContents config/core/cmp.lua}
         ${fileContents config/core/diagnostics.lua}
-        ${fileContents config/core/keymap.lua}
+        ${fileContents config/core/mappings.lua}
 
         -- Plugin configuration
         ${fileContents config/plugins/bufferline.lua}

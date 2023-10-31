@@ -4,6 +4,9 @@ local opt = vim.opt
 local g = vim.g
 local cmd = vim.cmd
 
+local augroup = vim.api.nvim_create_augroup   -- Create/get autocommand group
+local autocmd = vim.api.nvim_create_autocmd   -- Create autocommand
+
 -- Configuration --
 
 -- Global
@@ -50,6 +53,11 @@ opt.splitright = true
 opt.timeoutlen = 350
 opt.undofile = true
 
+-- Search
+opt.hlsearch = true
+opt.incsearch = true
+opt.showmatch = true
+
 -- set termguicolors to enable highlight groups
 opt.termguicolors = true
 opt.showmode = false
@@ -60,4 +68,3 @@ opt.spelllang = "en"
 for _, provider in ipairs { "node", "perl", "python3", "ruby" } do
   vim.g["loaded_" .. provider .. "_provider"] = 0
 end
-
