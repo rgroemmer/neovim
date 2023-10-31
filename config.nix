@@ -72,14 +72,25 @@
     (fileContents config/vim/better_escape.vim)
     ''
       lua << EOF
+        -- Core configuration
         ${fileContents config/core/init.lua}
+        ${fileContents config/core/theme.lua}
         ${fileContents config/core/lsp.lua}
         ${fileContents config/core/treesitter.lua}
         ${fileContents config/core/cmp.lua}
         ${fileContents config/core/diagnostics.lua}
         ${fileContents config/core/keymap.lua}
-        ${fileContents config/plugins/default.lua}
-        ${fileContents config/plugins/additional.lua}
+
+        -- Plugin configuration
+        ${fileContents config/plugins/bufferline.lua}
+        ${fileContents config/plugins/indent-blankline.lua}
+        ${fileContents config/plugins/lualine.lua}
+        ${fileContents config/plugins/miscellaneous.lua}
+        ${fileContents config/plugins/nvim-tree.lua}
+        ${fileContents config/plugins/wilder-menu.lua}
+        ${fileContents config/plugins/yaml-companion.lua}
+
+        -- Load at last
         ${fileContents config/core/which-key.lua}
       EOF
     ''
