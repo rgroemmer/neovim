@@ -8,6 +8,7 @@ cmp.setup({
   },
   mapping = cmp.mapping.preset.insert({
     ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+    ["<C-j>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-r>'] = cmp.mapping.complete(),
     ['<C-e>'] = cmp.mapping.close(),

@@ -44,7 +44,6 @@
     lazygit-nvim
     wilder-nvim
     indent-blankline-nvim
-    vim-better-whitespace
 
     # intelli-sense
     nvim-cmp
@@ -70,18 +69,29 @@
 
   # build neovim config
   neovimConfig = with pkgs.lib.strings; builtins.concatStringsSep "\n" [
-    (fileContents config/vim/config.vim)
     (fileContents config/vim/better_escape.vim)
     ''
       lua << EOF
-        ${fileContents config/init.lua}
+        -- Core configuration
+        ${fileContents config/core/init.lua}
+        ${fileContents config/core/autocmds.lua}
+        ${fileContents config/core/theme.lua}
         ${fileContents config/core/lsp.lua}
         ${fileContents config/core/treesitter.lua}
         ${fileContents config/core/cmp.lua}
         ${fileContents config/core/diagnostics.lua}
-        ${fileContents config/core/keymap.lua}
-        ${fileContents config/plugins/default.lua}
-        ${fileContents config/plugins/additional.lua}
+        ${fileContents config/core/mappings.lua}
+
+        -- Plugin configuration
+        ${fileContents config/plugins/bufferline.lua}
+        ${fileContents config/plugins/indent-blankline.lua}
+        ${fileContents config/plugins/lualine.lua}
+        ${fileContents config/plugins/miscellaneous.lua}
+        ${fileContents config/plugins/nvim-tree.lua}
+        ${fileContents config/plugins/wilder-menu.lua}
+        ${fileContents config/plugins/yaml-companion.lua}
+
+        -- Load at last
         ${fileContents config/core/which-key.lua}
       EOF
     ''
