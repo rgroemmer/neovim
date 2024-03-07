@@ -32,13 +32,15 @@ autocmd({'BufEnter'}, {
 autocmd({'BufWritePost'}, {
   pattern = "*.go",
   callback = function()
-    -- Hole den vollständigen Pfad der aktuellen Datei
+    -- Get full-qualified filepath
     local filename = vim.fn.expand("%:p")
-    -- Baue den goimports Befehl
-    local command = "goimports -w " .. filename
-    -- Führe den goimports Befehl aus
-    vim.api.nvim_command("silent ! " .. command)
-    -- Lade die Datei neu, um die von goimports vorgenommenen Änderungen zu sehen
+    -- Define cmds to run
+    local import_cmd = "goimports -w " .. filename
+    local fmt_cmd = "gopls -w " .. filename
+    -- Run cmds
+    vim.api.nvim_command("silent ! " .. import_cmd)
+    vim.api.nvim_command("silent ! " .. fmt_cmd)
+    -- Reload file
     vim.api.nvim_command("edit")
   end,
 })

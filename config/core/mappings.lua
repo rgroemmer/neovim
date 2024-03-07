@@ -12,8 +12,12 @@ vim.keymap.set('n', '<leader>c', '<CMD>let @/=""<cr>') -- clear search
 -- Explorer
 vim.keymap.set('n', '<leader>t', '<CMD>BufferLinePick<CR>')
 vim.keymap.set('n', '<leader><space>', '<CMD>NvimTreeToggle<CR>')
-vim.keymap.set('n', '<leader>l', '<CMD>NvimTreeCycleNext<CR>')
-vim.keymap.set('n', '<leader>h', '<CMD>NvimTreeCyclePrev<CR>')
+
+-- Buffers
+vim.keymap.set('n', '<leader>l', '<CMD>:bn<CR>')
+vim.keymap.set('n', '<leader>h', '<CMD>:bp<CR>')
+vim.keymap.set('n', '<leader>bq', '<CMD>:BufferLineCloseOthers<CR>')
+vim.keymap.set('n', '<leader>bp', '<CMD>:BufferLineTogglePin<CR>')
 
 -- BetterEscape
 vim.keymap.set('n', '<leader>qq', ':qa!<CR>')
@@ -27,3 +31,6 @@ vim.keymap.set('n', '<leader>gg', ':LazyGit<CR>')
 
 -- Yaml Companion
 vim.keymap.set('n', '<leader>y', '<CMD>Telescope yaml_schema<CR>')
+
+vim.keymap.set('n', '<leader>gr', '<CMD>! go run %<CR>')
+
