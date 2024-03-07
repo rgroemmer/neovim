@@ -28,3 +28,19 @@ autocmd({'BufEnter'}, {
     require('lazygit.utils').project_root_dir()
   end
 })
+
+autocmd({'BufWritePost'}, {
+  pattern = "*.go",
+  callback = function()
+    -- Get full-qualified filepath
+    local filename = vim.fn.expand("%:p")
+    -- Define cmds to run
+    local import_cmd = "goimports -w " .. filename
+    local fmt_cmd = "gopls -w " .. filename
+    -- Run cmds
+    vim.api.nvim_command("silent ! " .. import_cmd)
+    vim.api.nvim_command("silent ! " .. fmt_cmd)
+    -- Reload file
+    vim.api.nvim_command("edit")
+  end,
+})

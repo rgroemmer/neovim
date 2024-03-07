@@ -70,6 +70,7 @@
   # build neovim config
   neovimConfig = with pkgs.lib.strings; builtins.concatStringsSep "\n" [
     (fileContents config/vim/better_escape.vim)
+    (fileContents config/vim/config.vim)
     ''
       lua << EOF
         -- Core configuration

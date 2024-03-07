@@ -29,6 +29,7 @@ local wk = require('which-key')
 
 -- keymap documentation
 -- leader keymap
+
 wk.register({
   f = {
     name = "find",
@@ -42,10 +43,19 @@ wk.register({
     t = { "go mod tidy" },
     a = { "format file" },
   },
-
+  b = {
+    name = "buffer manager",
+    q = { "close others" },
+    p = { "pin tab" },
+  },
+  c = "[a] code action",
+  r = "[n] rename var",
+  q = "[q] quit!",
   t = "pick buffer",
   h = "prev buffer",
   l = "next buffer",
+  w = "write buffer",
+  y = "yaml scheme",
   ['<space>'] = "which_key_ignore",
 
   }, { prefix = "<leader>" }
@@ -59,6 +69,5 @@ wk.register({
     D = { "goto declaration" },
     r = { "goto references" },
     t = { "goto type definition" },
-  }}
-)
-
+  }
+})

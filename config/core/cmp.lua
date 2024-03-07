@@ -1,4 +1,5 @@
 local cmp = require('cmp')
+vim.o.completeopt = 'menu,menuone,noselect'
 
 cmp.setup({
   snippet = {
@@ -7,15 +8,14 @@ cmp.setup({
     end,
   },
   mapping = cmp.mapping.preset.insert({
-    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-    ["<C-j>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
+    -- scroll_docs is used to scroll the "beipackzettel" of the completion
+    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
-    ['<C-r>'] = cmp.mapping.complete(),
+    -- invoke completion
+    ['<C-Space>'] = cmp.mapping.complete(),
+    -- close completion
     ['<C-e>'] = cmp.mapping.close(),
-    ['<CR>'] = cmp.mapping.confirm({
-      behavior = cmp.ConfirmBehavior.Replace,
-      select = true,
-    }),
+    ['<CR>'] = cmp.mapping.confirm(),
   }),
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
@@ -29,7 +29,8 @@ cmp.setup({
 require "lsp_signature".setup({
   bind = true, -- This is mandatory, otherwise border config won't get registered.
   handler_opts = {
-    border = "rounded"
-  }
+    border = "none"
+  },
+  timer_interval = 50,
 })
 
