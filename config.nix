@@ -24,7 +24,7 @@
 
   startPlugins = with pkgs.vimPlugins; [
     # colorscheme
-    onedark-nvim
+    tokyonight-nvim
 
     # lsp-plugins
     nvim-lspconfig

@@ -10,7 +10,6 @@ local autocmd = vim.api.nvim_create_autocmd   -- Create autocommand
 -- Configuration --
 
 -- Global
-cmd 'colorscheme onedark'
 g.mapleader = " "
 
 -- Disable netrw acording to nvim-tree
