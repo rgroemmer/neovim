@@ -25,6 +25,7 @@
   startPlugins = with pkgs.vimPlugins; [
     # colorscheme
     tokyonight-nvim
+    catppuccin-nvim
 
     # lsp-plugins
     nvim-lspconfig

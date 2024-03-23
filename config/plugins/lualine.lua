@@ -1,7 +1,7 @@
 -- statusbar
 require('lualine').setup({
   options = {
-    theme = 'tokyonight',
+    theme = 'catppuccin',
     icons_enabled = true,
     component_separators = '|',
     section_separators = '',
